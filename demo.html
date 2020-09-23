@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<title>Reddit Embed Demo</title>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css"/>
+<script src ="reddit-embed.js"></script>
+
+<body class="m-3">
+  <h2>Enter the url to preview:</h2>
+  <input type="text" class="form-control" value="https://www.reddit.com/r/anime/comments/iybar6/about.json" id="url">
+  <script>
+    function load(){
+      embed(document.getElementById("url").value)
+    }
+  </script>
+  <button type="button" onClick="load()" class="btn btn-primary mt-2">Load it up!</button>
+
+  <div></div>
+
+
+</body>
+</html>
