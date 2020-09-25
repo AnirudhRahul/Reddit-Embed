@@ -1,0 +1,46 @@
+.link-flair {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-right: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: text-bottom;
+    white-space: pre;
+    word-break: normal;
+    padding: 0 4px;
+}
+
+.reddit-embed {
+    font-family: Arial, sans-serif;
+    line-height: 21px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.reddit-embed > div {
+  border-style: groove;
+  padding: 1em;
+}
+
+.reddit-embed table{
+    border: 2px solid var(--light);
+    border-spacing: 0;
+    border-collapse: collapse;
+    display: inline-block;
+    margin-bottom: 4px;
+    margin-top: 4px;
+    overflow-x: auto;
+    word-break: normal;
+}
+
+.reddit-embed tr th{
+  border: 1px solid var(--light);
+  padding: 4px 8px;
+}
+
+.reddit-embed td{
+  border: 1px solid var(--light);
+  padding: 4px 8px;
+}
