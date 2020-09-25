@@ -26,13 +26,13 @@ function process_data(response, div){
   comments = response[1].data.children
 
   sr_name = post.subreddit_name_prefixed
-  out.push('<h5>'+sr_name+'</h5>')
+  // out.push('<h3>'+sr_name+'</h5>')
 
   title = post.title
   // out.push('<h3>'+title+'</h3>')
 
   link = 'https://reddit.com' + post.permalink
-  out.push('<a href="'+ link +'"><h3>'+ title +'</h3></a>')
+  out.push('<a href="'+ link +'"><h1>'+ title +'</h1></a>')
 
   console.log(post)
   console.log(comments)
