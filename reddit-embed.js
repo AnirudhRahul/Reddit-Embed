@@ -3,6 +3,7 @@ function embed(url, div){
   cached_json = tryJson(sessionStorage.getItem(url))
 
   if (cached_json) {
+    console.log("Cached")
     process_data(cached_json, div)
   }
   else{
@@ -30,20 +31,35 @@ function process_data(response, div){
   title = post.title
   // out.push('<h3>'+title+'</h3>')
 
-  link = post.url
+  link = 'https://reddit.com' + post.permalink
   out.push('<a href="'+ link +'"><h3>'+ title +'</h3></a>')
 
   console.log(post)
   console.log(comments)
 
+  const now = Date.now()
   skip = 1
   for(i in comments){
-    const cur = comments[i].data
-    if(i<skip || !cur.body_html)
+    if(i<skip || !comments[i].data.body_html)
       continue
-    const html = he.decode(cur.body_html)
-    console.log(html)
-    out.push(html)
+    const cur = comments[i].data
+    const user_url = 'https://reddit.com' + cur.permalink
+    console.log(user_url)
+    const time_created = cur.created_utc
+    const timeago = timeDifference(now, time_created*1000)
+    const commentDiv = [
+      '<div>',
+          '<div class="user text-muted">',
+              '<a href="'+user_url+'">' + cur.author + '</a>',
+              '<span class="comment-meta"> Points ' + cur.score + '</span>',
+              '<span class="comment-meta"><strong>&#183;</strong></span> ',
+              '<span class="comment-meta">' + timeago + '</span>',
+          '</div>',
+      he.decode(cur.body_html),
+      '</div>',
+    ].join('\n')
+
+    out.push(commentDiv)
   }
 
 
@@ -55,5 +71,41 @@ function tryJson(str) {
         return JSON.parse(str);
     } catch (e) {
         return false;
+    }
+}
+
+
+function timeDifference(current, previous) {
+
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    var elapsed = current - previous;
+
+    if (elapsed < msPerMinute) {
+         return Math.round(elapsed/1000) + ' seconds ago';
+    }
+
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' minutes ago';
+    }
+
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' hours ago';
+    }
+
+    else if (elapsed < msPerMonth) {
+        return Math.round(elapsed/msPerDay) + ' days ago';
+    }
+
+    else if (elapsed < msPerYear) {
+        return Math.round(elapsed/msPerMonth) + ' months ago';
+    }
+
+    else {
+        return Math.round(elapsed/msPerYear ) + ' years ago';
     }
 }

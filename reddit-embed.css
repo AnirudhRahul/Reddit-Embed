@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Noto Sans";
+    src: url("Reddit-Noto-Sans.woff2")
+}
+
 .link-flair {
     font-size: 12px;
     font-weight: 500;
@@ -14,14 +19,59 @@
 }
 
 .reddit-embed {
-    font-family: Arial, sans-serif;
-    line-height: 21px;
     -webkit-font-smoothing: antialiased;
+    /* font-size: 2em; */
 }
 
 .reddit-embed > div {
-  border-style: groove;
-  padding: 1em;
+  margin-bottom: 1.5em;
+  font-family: Noto Sans, Arial,sans-serif;
+  /* border-style: groove;
+  padding: 1em; */
+}
+
+.reddit-embed p{
+  /* padding: .8em 0 .25em; */
+}
+
+/* :is(h1, h2, h3, h4, h5, h6) {
+
+} */
+
+.reddit-embed h1{
+  font-size: 28px;
+  margin-bottom: 8px;
+  margin-top: 1.4em;
+}
+
+.reddit-embed h2{
+  font-size: 25px;
+  margin-bottom: 8px;
+  margin-top: 1.4em;
+}
+
+.reddit-embed h3{
+  font-size: 22px;
+  margin-bottom: 8px;
+  margin-top: 1.4em;
+}
+
+.reddit-embed h4{
+  font-size: 20px;
+  margin-bottom: 8px;
+  margin-top: 1.4em;
+}
+
+.reddit-embed h5{
+  font-size: 18px;
+  margin-bottom: 8px;
+  margin-top: 1.4em;
+}
+
+.reddit-embed h6{
+  font-size: 15px;
+  margin-bottom: 8px;
+  margin-top: 1.4em;
 }
 
 .reddit-embed table{
@@ -43,4 +93,29 @@
 .reddit-embed td{
   border: 1px solid var(--light);
   padding: 4px 8px;
+}
+
+/* .reddit-embed code{
+  background-color: var(--dark);
+} */
+
+.reddit-embed .user{
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 0;
+  min-height: 18px;
+  word-break: break-word;
+  align-items: center;
+  /* color: var(--light); */
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  line-height: 20px;
+  transition: opacity .2s;
+  vertical-align: baseline;
+}
+
+.reddit-embed .comment-meta{
+  padding-left: 0.5em;
 }
