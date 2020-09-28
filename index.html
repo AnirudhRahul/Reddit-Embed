@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="reddit-embed.css"/>
 <script src ="reddit-embed.js"></script>
 
-<body class="m-3">
+<body class="m-2">
   <h2>Enter the url to preview:</h2>
   <input type="text" class="form-control" value="https://www.reddit.com/r/test/comments/izb2ds/testing_post_parsing/about.json" id="url">
 
@@ -18,11 +18,15 @@
     function load(){
       embed(document.getElementById("url").value, document.getElementById("out"))
     }
+    function force_reload(){
+      embed(document.getElementById("url").value, document.getElementById("out"), false)
+    }
   </script>
   <button type="button" onClick="load()" class="btn btn-primary mt-2">Load json</button>
+  <button type="button" onClick="force_reload()" class="btn btn-primary mt-2">Force reload json</button>
   <a href="test_links.txt" style="padding-left:0.5em">More test posts here!</a>
 
-  <div id="out" class="reddit-embed mt-4"></div>
+  <div id="out" class="mt-5 center reddit-embed"></div>
 
 
 </body>

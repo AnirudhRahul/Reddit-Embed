@@ -1,18 +1,27 @@
+const msPerMinute = 60 * 1000;
+const msPerHour = msPerMinute * 60;
+const msPerDay = msPerHour * 24;
+const msPerMonth = msPerDay * 30;
+const msPerYear = msPerDay * 365;
 
-function embed(url, div){
+const cache_timeout = 30*msPerMinute
+
+function embed(url, div, useCache = true){
   cached_json = tryJson(sessionStorage.getItem(url))
 
-  if (cached_json) {
-    console.log("Cached")
-    process_data(cached_json, div)
+  if (useCache && cached_json && Date.now() < cached_json.expire_time) {
+    process_data(JSON.parse(cached_json.response), div)
+    console.log("Used Cache")
   }
   else{
     console.log("Requesting JSON from reddit: " + url)
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onload = () => {
-      console.log('Response:\n' + xhr.responseText)
-      sessionStorage.setItem(url, xhr.responseText);
+      sessionStorage.setItem(url, JSON.stringify({
+        response: xhr.responseText,
+        expire_time: Date.now() + cache_timeout
+      }));
       process_data(JSON.parse(xhr.responseText), div);
     }
     xhr.send();
@@ -24,42 +33,66 @@ function process_data(response, div){
   window.response = response
   post = response[0].data.children[0].data
   comments = response[1].data.children
-
-  sr_name = post.subreddit_name_prefixed
-  // out.push('<h3>'+sr_name+'</h5>')
-
-  title = post.title
-  // out.push('<h3>'+title+'</h3>')
-
-  link = 'https://reddit.com' + post.permalink
-  out.push('<a href="'+ link +'"><h1>'+ title +'</h1></a>')
-
   console.log(post)
   console.log(comments)
+  // sr_name = post.subreddit_name_prefixed
+  // out.push('<h3>'+sr_name+'</h5>')
+
+  out.push(Title({
+    title: post.title,
+    post_link: 'https://reddit.com' + post.permalink
+  }))
+
+  comment_q = []
+  for(let i=comments.length-1; i>=0; i--){
+    // Push comment into rendering queue
+    // if it has a body
+    if(comments[i].data.body_html)
+      comment_q.push({
+        cur: comments[i].data,
+        depth: 0
+      })
+  }
 
   const now = Date.now()
-  skip = 1
-  for(i in comments){
-    if(i<skip || !comments[i].data.body_html)
-      continue
-    const cur = comments[i].data
-    const user_url = 'https://reddit.com' + cur.permalink
-    console.log(user_url)
-    const time_created = cur.created_utc
-    const timeago = timeDifference(now, time_created*1000)
-    const commentDiv = [
-      '<div>',
-          '<div class="user text-muted">',
-              '<a href="'+user_url+'">' + cur.author + '</a>',
-              '<span class="comment-meta"> Points ' + cur.score + '</span>',
-              '<span class="comment-meta"><strong>&#183;</strong></span> ',
-              '<span class="comment-meta">' + timeago + '</span>',
-          '</div>',
-      he.decode(cur.body_html),
-      '</div>',
-    ].join('\n')
+  initial_shift = 8
+  shift_diff = 24
+  while(comment_q.length > 0){
 
-    out.push(commentDiv)
+    const {cur, depth} = comment_q.pop()
+
+    if(cur.score > 999){
+      const thousands = Math.round(cur.score/1000)
+      const hundreds = Math.round(cur.score/100) % 10
+      if(hundreds==0){
+        cur.score = thousands + 'k'
+      }
+      else{
+        cur.score = thousands + '.' + hundreds + 'k'
+      }
+    }
+    const comment = Comment({
+      left_padding: initial_shift + shift_diff * depth,
+      post_link: 'https://reddit.com' + cur.permalink,
+      author_name: cur.author,
+      author_class: cur.is_submitter ? 'authorname bold': 'authorname',
+      comment_points: cur.score,
+      point_plural: cur.score == 1 ? '':'s',
+      time_ago: timeDifference(now, cur.created_utc*1000),
+      body: he.decode(cur.body_html),
+    })
+    out.push(comment)
+    if(cur.replies){
+      replies = cur.replies.data.children
+      for(let i = replies.length-1; i>=0; i--){
+        if(replies[i].data.body_html)
+          comment_q.push({
+            cur: replies[i].data,
+            depth: depth + 1
+          })
+      }
+    }
+
   }
 
 
@@ -70,18 +103,13 @@ function tryJson(str) {
     try {
         return JSON.parse(str);
     } catch (e) {
+      console.log("FAILED PARSING")
         return false;
     }
 }
 
 
 function timeDifference(current, previous) {
-
-    var msPerMinute = 60 * 1000;
-    var msPerHour = msPerMinute * 60;
-    var msPerDay = msPerHour * 24;
-    var msPerMonth = msPerDay * 30;
-    var msPerYear = msPerDay * 365;
 
     var elapsed = current - previous;
 
@@ -94,18 +122,56 @@ function timeDifference(current, previous) {
     }
 
     else if (elapsed < msPerDay ) {
-         return Math.round(elapsed/msPerHour ) + ' hours ago';
+         return Math.floor(elapsed/msPerHour ) + ' hours ago';
     }
 
     else if (elapsed < msPerMonth) {
-        return Math.round(elapsed/msPerDay) + ' days ago';
+        return Math.floor(elapsed/msPerDay) + ' days ago';
     }
 
     else if (elapsed < msPerYear) {
-        return Math.round(elapsed/msPerMonth) + ' months ago';
+        return Math.floor(elapsed/msPerMonth) + ' months ago';
     }
 
     else {
-        return Math.round(elapsed/msPerYear ) + ' years ago';
+        return Math.floor(elapsed/msPerYear ) + ' years ago';
     }
 }
+
+
+// TEMPLATES
+
+/*
+  All templates take in named arguements,
+  feel free to add arguements if you want
+  to display additional data
+*/
+const Title = ({
+post_link,
+title,
+}) =>`
+<a class="title" href="${post_link}">${title}</a>
+`;
+
+const Comment = ({
+left_padding,
+post_link,
+author_name,
+author_class,
+comment_points,
+point_plural,
+time_ago,
+body
+}) =>`
+<div class="comment" style="padding-left:${left_padding}px">
+    <div class="author-info">
+        <a href="${post_link}" class="${author_class}">${author_name}</a>
+        <span class="left-space">&nbsp${comment_points} point${point_plural}</span>
+        <span class="left-space bold">&#183;</span>
+        <span class="left-space"> ${time_ago}</span>
+    </div>
+    <div class="comment-body">
+      ${body}
+    </div>
+</div>
+`;
