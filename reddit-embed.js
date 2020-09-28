@@ -33,8 +33,7 @@ function process_data(response, div){
   window.response = response
   post = response[0].data.children[0].data
   comments = response[1].data.children
-  console.log(post)
-  console.log(comments)
+
   // sr_name = post.subreddit_name_prefixed
   // out.push('<h3>'+sr_name+'</h5>')
 
@@ -92,7 +91,6 @@ function process_data(response, div){
           })
       }
     }
-
   }
 
 
@@ -103,7 +101,6 @@ function tryJson(str) {
     try {
         return JSON.parse(str);
     } catch (e) {
-      console.log("FAILED PARSING")
         return false;
     }
 }
