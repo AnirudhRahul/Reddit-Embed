@@ -81,6 +81,12 @@ function process_data(response, div){
       body: he.decode(cur.body_html),
     })
     out.push(comment)
+
+    if(out.length == 12)
+      div.innerHTML = out.join('\n')
+
+
+    //Add replies to queue
     if(cur.replies){
       replies = cur.replies.data.children
       for(let i = replies.length-1; i>=0; i--){
