@@ -1,3 +1,42 @@
+var red = function(){
+
+  // TEMPLATES
+
+  /*
+    All templates take in named arguements,
+    feel free to add arguements if you want
+    to display additional data
+  */
+  const Title = ({
+  post_link,
+  title,
+  }) =>`
+  <a class="title" href="${post_link}">${title}</a>
+  `;
+
+  const Comment = ({
+  left_padding,
+  post_link,
+  author_name,
+  author_class,
+  comment_points,
+  point_plural,
+  time_ago,
+  body
+  }) =>`
+  <div class="comment" style="padding-left:${left_padding}px">
+      <div class="author-info">
+          <a href="${post_link}" class="${author_class}">${author_name}</a>
+          <span class="left-space">&nbsp${comment_points} point${point_plural}</span>
+          <span class="left-space bold">&#183;</span>
+          <span class="left-space"> ${time_ago}</span>
+      </div>
+      <div class="comment-body">
+        ${body}
+      </div>
+  </div>
+  `;
+
 const msPerMinute = 60 * 1000;
 const msPerHour = msPerMinute * 60;
 const msPerDay = msPerHour * 24;
@@ -141,40 +180,9 @@ function timeDifference(current, previous) {
     }
 }
 
+  return{
+    embed: embed
 
-// TEMPLATES
+  }
 
-/*
-  All templates take in named arguements,
-  feel free to add arguements if you want
-  to display additional data
-*/
-const Title = ({
-post_link,
-title,
-}) =>`
-<a class="title" href="${post_link}">${title}</a>
-`;
-
-const Comment = ({
-left_padding,
-post_link,
-author_name,
-author_class,
-comment_points,
-point_plural,
-time_ago,
-body
-}) =>`
-<div class="comment" style="padding-left:${left_padding}px">
-    <div class="author-info">
-        <a href="${post_link}" class="${author_class}">${author_name}</a>
-        <span class="left-space">&nbsp${comment_points} point${point_plural}</span>
-        <span class="left-space bold">&#183;</span>
-        <span class="left-space"> ${time_ago}</span>
-    </div>
-    <div class="comment-body">
-      ${body}
-    </div>
-</div>
-`;
+}();

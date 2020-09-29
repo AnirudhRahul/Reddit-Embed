@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
 <title>Reddit Embed Demo</title>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js"></script>
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css"/> -->
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css"/> -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css"/>
-<link rel="stylesheet" href="reddit-embed.css"/>
-<script src ="reddit-embed.js"></script>
-
+<link rel="stylesheet" href="red.css"/>
+<script src ="red.js"></script>
+<script>
+  function load(){
+    red.embed(document.getElementById("url").value, document.getElementById("out"))
+  }
+  function force_reload(){
+    red.embed(document.getElementById("url").value, document.getElementById("out"), false)
+  }
+</script>
 <body class="m-2">
   <h2>Enter the url to preview:</h2>
-  <input type="text" class="form-control" value="https://www.reddit.com/r/Showerthoughts/comments/d4yxtq/most_people_know_so_little_that_if_they_were/about.json" id="url">
-  <script>
-    function load(){
-      embed(document.getElementById("url").value, document.getElementById("out"))
-    }
-    function force_reload(){
-      embed(document.getElementById("url").value, document.getElementById("out"), false)
-    }
-  </script>
+  <input type="text" class="form-control" value="https://www.reddit.com/r/redditdev/comments/39zje0/reddit_will_soon_only_be_available_over_https/about.json" id="url">
+
   <button type="button" onClick="load()" class="btn btn-primary mt-2">Load json</button>
   <button type="button" onClick="force_reload()" class="btn btn-primary mt-2">Force reload json</button>
   <a href="test_links.txt" style="padding-left:0.5em">More test posts here!</a>
 
   <div id="out" class="mt-5 center reddit-embed"></div>
+  <script>load()</script>
 
 
 </body>
