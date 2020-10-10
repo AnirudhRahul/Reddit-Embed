@@ -3,29 +3,48 @@
 <title>Reddit Embed Demo</title>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/he/1.2.0/he.min.js"></script>
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cerulean/bootstrap.min.css"/> -->
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css"/> -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css"/>
 <link rel="stylesheet" href="red.css"/>
 <script src ="red.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css" class="light-theme" disabled/>
+<link rel="stylesheet" href="light-theme.css" class="light-theme" disabled/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css" class="dark-theme"/>
+<link rel="stylesheet" href="dark-theme.css" class="dark-theme"/>
+
 <script>
+  darkTheme = true
   function load(){
     red.embed(document.getElementById("url").value, document.getElementById("out"))
   }
   function force_reload(){
     red.embed(document.getElementById("url").value, document.getElementById("out"), false)
   }
+  function toggleTheme(){
+    const theme_to_disable = darkTheme? 'dark-theme' : 'light-theme'
+    const theme_to_enable = !darkTheme? 'dark-theme' : 'light-theme'
+    for(element of document.getElementsByClassName(theme_to_disable))
+      element.setAttribute('disabled', '')
+    for(element of document.getElementsByClassName(theme_to_enable))
+      element.removeAttribute('disabled')
+    darkTheme = !darkTheme
+  }
 </script>
+
 <body class="m-2">
+  <div class="custom-control custom-switch" style="float:right;">
+    <input type="checkbox" class="custom-control-input" id="theme-toggle" onclick="toggleTheme()">
+    <label class="custom-control-label" for="theme-toggle">Toggle Theme</label>
+  </div>
+
   <h2>Enter the url to preview:</h2>
-  <input type="text" class="form-control" value="https://www.reddit.com/r/redditdev/comments/39zje0/reddit_will_soon_only_be_available_over_https/about.json" id="url">
+
+  <input type="text" class="form-control" value="https://www.reddit.com/r/test/comments/izb2ds/testing_post_parsing/about.json" id="url">
 
   <button type="button" onClick="load()" class="btn btn-primary mt-2">Load json</button>
   <button type="button" onClick="force_reload()" class="btn btn-primary mt-2">Force reload json</button>
   <a href="test_links.txt" style="padding-left:0.5em">More test posts here!</a>
 
   <div id="out" class="mt-5 center reddit-embed"></div>
-  <script>load()</script>
 
 
 </body>
