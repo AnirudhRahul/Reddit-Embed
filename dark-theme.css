@@ -1,0 +1,9 @@
+:root {
+  --reddit-text: #fff;
+  --reddit-light: #adb5bd;
+  --reddit-link: #3498db;
+  --reddit-text-muted: #adb5bd;
+  --reddit-code-bg: #F6F7F822;
+  --reddit-spoiler-bg: #646468;
+  --reddit-spoiler-bg-revealed: #64646888;
+}
