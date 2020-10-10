@@ -20,11 +20,13 @@
 }
 
 :root {
-  --reddit-text: var(--white);
-  --reddit-light: var(--light);
-  --reddit-link: var(--info);
-  --reddit-text-muted: var(--light);
-  --reddit-code-bg: #F6F7F822;
+  --reddit-text: #fff;
+  --reddit-blockquote: rgba(28, 28, 28, 0.2);
+  --reddit-link: #0079d3;
+  --reddit-text-muted: #7c7c7c;
+  --reddit-code-bg: #F6F7F8;
+  --reddit-spoiler-bg: #646468;
+  --reddit-spoiler-bg-revealed: #64646888;
 }
 
 /* General styling for everything
@@ -203,7 +205,6 @@ and comment body */
   background: none;
 }
 
-
 .reddit-embed .expand-button {
   font-size: 16px;
   font-family: IBMPlexSans, Arial, sans-serif;
@@ -211,6 +212,19 @@ and comment body */
   display: inline-block;
 }
 
+.reddit-embed .md-spoiler-text {
+  background: var(--reddit-spoiler-bg);
+  border-radius: 2px;
+  transition: background 1s ease-out;
+  color: rgba(0,0,0,0);
+  cursor: pointer;
+}
+
+.reddit-embed .md-spoiler-revealed {
+  background: var(--reddit-spoiler-bg-revealed);
+  border-radius: 2px;
+  transition: background 1s ease-out;
+}
 
 /* Misc */
 .link-flair {

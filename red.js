@@ -223,9 +223,10 @@ function renderDiv(response, div, opts = defaults){
 
   div.innerHTML = outputHTML.join('\n')
 
-  //Post processing
+  // Post-processing rendered html
   for(anchor of div.getElementsByTagName('a')){
     if(opts.support_spoiler_links && spoiler_links.includes(anchor.getAttribute('href'))){
+      // Visual indicator for spoiler links
       anchor.innerHTML += '<sup class="expand-button">+</sup>'
       // Make the link literally do nothing, and add a helpful message for noobs
       anchor.href = '#'
@@ -236,6 +237,12 @@ function renderDiv(response, div, opts = defaults){
         anchor.setAttribute('target', '_blank')
     }
   }
+
+  // Make spoilers tags toggle when clicked 
+  for(spoiler of div.getElementsByClassName('md-spoiler-text')){
+    spoiler.setAttribute('onclick', "this.setAttribute('class', 'md-spoiler-revealed')")
+  }
+
 }
 
 
