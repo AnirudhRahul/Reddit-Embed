@@ -230,7 +230,6 @@ function renderDiv(response, div, opts = defaults){
       // Make the link literally do nothing, and add a helpful message for noobs
       anchor.href = '#'
       anchor.setAttribute('onclick', 'alert("This is a spoiler link, hover over it to see the spoiler text"); return false;')
-      anchor.setAttribute('title', "dw I replaced the spoiler text")
     }
     else{
       if(opts.open_links_in_new_tab)
