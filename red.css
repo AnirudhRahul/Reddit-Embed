@@ -21,10 +21,10 @@
 
 :root {
   --reddit-text: #fff;
-  --reddit-blockquote: rgba(28, 28, 28, 0.2);
-  --reddit-link: #0079d3;
-  --reddit-text-muted: #7c7c7c;
-  --reddit-code-bg: #F6F7F8;
+  --reddit-link: #3498db;
+  --reddit-text-muted: #adb5bd;
+  --reddit-blockquote: #adb5bd;
+  --reddit-code-bg: #F6F7F822;
   --reddit-spoiler-bg: #646468;
   --reddit-spoiler-bg-revealed: #64646888;
 }
@@ -164,7 +164,7 @@ and comment body */
 
 /* Blockquotes */
 .reddit-embed blockquote {
-    border-left: 5px solid var(--reddit-light);
+    border-left: 5px solid var(--reddit-blockquote);
     margin: 5px 0 5px 10px;
     padding-left: 10px;
 }

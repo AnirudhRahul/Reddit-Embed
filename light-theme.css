@@ -1,9 +1,9 @@
 :root {
-  --reddit-text: #1c1c1c;
-  --reddit-light: #adb5bd;
-  --reddit-link: #3498db;
-  --reddit-text-muted: #adb5bd;
-  --reddit-code-bg: #F6F7F822;
-  --reddit-spoiler-bg: #646468;
-  --reddit-spoiler-bg-revealed: #64646888;
+  --reddit-text: #fff;
+  --reddit-link: #0079d3;
+  --reddit-text-muted: #7c7c7c;
+  --reddit-blockquote: rgba(28, 28, 28, 0.2);
+  --reddit-code-bg: #F6F7F8;
+  --reddit-spoiler-bg: #545452;
+  --reddit-spoiler-bg-revealed: #5454521A;
 }
