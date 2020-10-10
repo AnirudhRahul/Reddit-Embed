@@ -204,7 +204,12 @@ and comment body */
 }
 
 
-
+.reddit-embed .expand-button {
+  font-size: 16px;
+  font-family: IBMPlexSans, Arial, sans-serif;
+  text-decoration: none !important;
+  display: inline-block;
+}
 
 
 /* Misc */
