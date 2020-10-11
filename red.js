@@ -172,7 +172,7 @@ function formatScore(score){
   // Converts score to string if it's large
   if(score > 999){
     const thousands = Math.floor(score/1000)
-    const hundreds = Math.floor(score/100) % 10
+    const hundreds = Math.round((score-thousands*1000)/100)
     if(hundreds==0){
       return thousands + 'k'
     }
