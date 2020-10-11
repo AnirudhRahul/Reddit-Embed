@@ -29,7 +29,9 @@
 
 * [Vertical Video Example](https://www.reddit.com/r/PublicFreakout/comments/j8qhux/this_is_target_black_friday_pep_talk/about.json)
 
-* [External Video Example](https://www.reddit.com/r/videos/comments/j8pkbk/karl_urbans_prank_on_viggo_mortensen/about.json)
+* [Youtube Video Example](https://www.reddit.com/r/videos/comments/j8pkbk/karl_urbans_prank_on_viggo_mortensen/about.json)
+
+* [Streamable Video Example](https://www.reddit.com/r/vid/comments/ix5p0y/mathematical_animation_inspired_by_numberphiles/about.json)
 
 * [MultiImage post](https://www.reddit.com/r/Minecraft/comments/iukj2y/hey_reddit_its_been_a_while_since_ive_posted/about.json)
 
