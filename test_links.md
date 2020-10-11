@@ -7,9 +7,15 @@
 # Post Types
 * [Just a Link Example](https://www.reddit.com/r/datasets/comments/j8t888/6_ways_to_get_news_data_online/about.json)
 
-* [Picture Example](https://www.reddit.com/r/dataisbeautiful/comments/iz881y/oc_us_contribution_to_1918_pandemic_dead_vs_2020/about.json)
+* [Native Image Landscape](https://www.reddit.com/r/EarthPorn/comments/8l9xbl/milky_way_coming_out_of_an_erupting_volcano/about.json) 
 
-* [External Image Example](https://www.reddit.com/r/Kaguya_sama/comments/j8myhc/hayasaka_going_for_a_run_by_%E3%81%97%E3%83%BC%E3%82%AD/about.json)
+  * Current default
+
+* [Native Image Mars](https://www.reddit.com/r/pics/comments/a89m64/water_ice_on_mars_just_shot_by_the_esa/about.json)
+
+* [External Image Keanu](https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json)
+
+* [External Image Hayasaka](https://www.reddit.com/r/Kaguya_sama/comments/j8myhc/hayasaka_going_for_a_run_by_%E3%81%97%E3%83%BC%E3%82%AD/about.json)
 
 * [GIF Example](https://www.reddit.com/r/gamedev/comments/iyxcfc/how_i_animate_a_character_with_limited_art_skills/about.json)
 
