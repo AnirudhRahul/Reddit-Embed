@@ -7,7 +7,7 @@
 # Post Types
 * [Just a Link Example](https://www.reddit.com/r/datasets/comments/j8t888/6_ways_to_get_news_data_online/about.json)
 
-* [Native Image Landscape](https://www.reddit.com/r/EarthPorn/comments/8l9xbl/milky_way_coming_out_of_an_erupting_volcano/about.json) 
+* [Native Image Shooting Star](https://www.reddit.com/r/wallpapers/comments/gayrju/the_shooting_star_3840x2160/about.json) 
 
   * Current default
 
