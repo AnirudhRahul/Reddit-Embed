@@ -273,12 +273,13 @@ function renderDiv(response, div, opts = defaults){
         post_body = Post_Video_Body({
           video_src: post_data.media.reddit_video.fallback_url,
           poster_src: post_data.preview.images[0].source.url,
-          // width: post_data.media.reddit_video.width,
-          // height: post_data.media.reddit_video.height,
         })
       }
+      else if(post_data.post_hint == 'rich:video'){
+        post_body = '<div class="video-container">' + he.decode(post_data.media_embed.content) + '</div>'
+      }
       else{
-        console.error("Uhhh I haven't seen this post hint before")
+        console.error("Uhhh I haven't seen this post hint before: " + post_data.post_hint)
       }
 
     }
