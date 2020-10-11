@@ -24,6 +24,7 @@
   --reddit-link: #3498db;
   --reddit-text-muted: #adb5bd;
   --reddit-blockquote: #adb5bd;
+  --reddit-table-border: #adb5bd;
   --reddit-code-bg: #F6F7F822;
   --reddit-spoiler-bg: #646468;
   --reddit-spoiler-bg-revealed: #64646888;
@@ -58,7 +59,6 @@ in a reddit-embed div */
   word-break: break-word;
   align-items: center;
   color: var(--reddit-text-muted);
-  /* color: black; */
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
@@ -70,6 +70,7 @@ in a reddit-embed div */
 .reddit-embed .authorname{
   color: var(--reddit-text);
   font-size:15px;
+  text-decoration: none;
 }
 .reddit-embed .bold{
   font-weight: 700;
@@ -104,6 +105,10 @@ and comment body */
 /* Regular ol links */
 .reddit-embed a {
   color: var(--reddit-link);
+  text-decoration: underline;
+}
+.reddit-embed a:hover{
+  text-decoration: underline;
 }
 
 /* Spacing for normal text */
@@ -171,7 +176,7 @@ and comment body */
 
 /* Tables */
 .reddit-embed table{
-    border: 2px solid var(--light);
+    border: 2px solid var(--reddit-table-border);
     border-spacing: 0;
     border-collapse: collapse;
     display: inline-block;
@@ -181,11 +186,11 @@ and comment body */
     word-break: normal;
 }
 .reddit-embed tr th{
-  border: 1px solid var(--light);
+  border: 1px solid var(--reddit-table-border);
   padding: 4px 8px;
 }
 .reddit-embed td{
-  border: 1px solid var(--light);
+  border: 1px solid var(--reddit-table-border);
   padding: 4px 8px;
 }
 
