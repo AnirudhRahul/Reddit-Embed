@@ -23,7 +23,9 @@
 
 * [GIF Example](https://www.reddit.com/r/gamedev/comments/iyxcfc/how_i_animate_a_character_with_limited_art_skills/about.json)
 
-* [Video Example](https://www.reddit.com/r/dataisbeautiful/comments/iyv3qv/oc_cooccurring_pok%C3%A9mon_types/about.json)
+* [Square Video Example](https://www.reddit.com/r/dataisbeautiful/comments/iyv3qv/oc_cooccurring_pok%C3%A9mon_types/about.json)
+
+* [Landscape Video Example](https://www.reddit.com/r/anime/comments/j7apsp/report_card_non_non_biyori/about.json)
 
 * [Vertical Video Example](https://www.reddit.com/r/PublicFreakout/comments/j8qhux/this_is_target_black_friday_pep_talk/about.json)
 
