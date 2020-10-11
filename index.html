@@ -30,7 +30,7 @@
   }
   function force_reload(){
     if(validateURL(document.getElementById("url").value))
-      red.embed(document.getElementById("url").value, document.getElementById("out"), false)
+      red.embed(document.getElementById("url").value, document.getElementById("out"), {use_cache:false})
   }
   darkTheme = true
   function toggleTheme(){
