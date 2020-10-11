@@ -5,19 +5,19 @@
    License: none (public domain)
 */
 
-.reddit-embed html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+.reddit-embed html, .reddit-embed body, .reddit-embed div, .reddit-embed span, .reddit-embed applet, .reddit-embed object, .reddit-embed iframe,
+h1, .reddit-embed h2, .reddit-embed h3, .reddit-embed h4, .reddit-embed h5, .reddit-embed h6, .reddit-embed p, .reddit-embed blockquote, .reddit-embed pre,
+a, .reddit-embed abbr, .reddit-embed acronym, .reddit-embed address, .reddit-embed big, .reddit-embed cite, .reddit-embed code,
+del, .reddit-embed dfn, .reddit-embed em, .reddit-embed img, .reddit-embed ins, .reddit-embed kbd, .reddit-embed q, .reddit-embed s, .reddit-embed samp,
+small, .reddit-embed strike, .reddit-embed strong, .reddit-embed sub, .reddit-embed sup, .reddit-embed tt, .reddit-embed var,
+b, .reddit-embed u, .reddit-embed i, .reddit-embed center,
+dl, .reddit-embed dt, .reddit-embed dd, .reddit-embed ol, .reddit-embed ul, .reddit-embed li,
+fieldset, .reddit-embed form, .reddit-embed label, .reddit-embed legend,
+table, .reddit-embed caption, .reddit-embed tbody, .reddit-embed tfoot, .reddit-embed thead, .reddit-embed tr, .reddit-embed th, .reddit-embed td,
+article, .reddit-embed aside, .reddit-embed canvas, .reddit-embed details, .reddit-embed embed,
+figure, .reddit-embed figcaption, .reddit-embed footer, .reddit-embed header, .reddit-embed hgroup,
+menu, .reddit-embed nav, .reddit-embed output, .reddit-embed ruby, .reddit-embed section, .reddit-embed summary,
+time, .reddit-embed mark, .reddit-embed audio, .reddit-embed video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -26,21 +26,21 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-.reddit-embed article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+.reddit-embed article, .reddit-embed aside, .reddit-embed details, .reddit-embed figcaption, .reddit-embed figure,
+footer, .reddit-embed header, .reddit-embed hgroup, .reddit-embed menu, .reddit-embed nav, .reddit-embed section {
 	display: block;
 }
 .reddit-embed body {
 	line-height: 1;
 }
-.reddit-embed ol, ul {
+.reddit-embed ol, .reddit-embed ul {
 	list-style: none;
 }
-.reddit-embed blockquote, q {
+.reddit-embed blockquote, .reddit-embed q {
 	quotes: none;
 }
-.reddit-embed blockquote:before, blockquote:after,
-q:before, q:after {
+.reddit-embed blockquote:before, .reddit-embed blockquote:after,
+q:before, .reddit-embed q:after {
 	content: '';
 	content: none;
 }
@@ -71,7 +71,7 @@ q:before, q:after {
   font-weight:700;
 }
 
-.reddit-embed:root {
+:root {
   --reddit-text: #fff;
   --reddit-link: #3498db;
   --reddit-text-muted: #adb5bd;
