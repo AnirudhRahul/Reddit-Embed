@@ -11,7 +11,7 @@
 
   * Current default
 
-* [Native Image Mars](https://www.reddit.com/r/pics/comments/a89m64/water_ice_on_mars_just_shot_by_the_esa/about.json)
+* [Native Image Wallpaper](https://www.reddit.com/r/wallpapers/comments/5xq6no/decided_to_combine_two_of_my_favorite_wallpapers/about.json)
 
 * [External Image Keanu](https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json)
 
