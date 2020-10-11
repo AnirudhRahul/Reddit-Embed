@@ -12,13 +12,27 @@
 <link rel="stylesheet" href="dark-theme.css" class="dark-theme"/>
 
 <script>
-  darkTheme = true
+  function validateURL(url){
+    if(!url.startsWith('https://')){
+      alert('The input URL must start with https://')
+      return false;
+    }
+    else if(!url.endsWith('/about.json')){
+      alert('The input URL must end with about.json, look at the test posts for examples')
+      return false;
+    }
+    return true;
+  }
+
   function load(){
-    red.embed(document.getElementById("url").value, document.getElementById("out"))
+    if(validateURL(document.getElementById("url").value))
+      red.embed(document.getElementById("url").value, document.getElementById("out"))
   }
   function force_reload(){
-    red.embed(document.getElementById("url").value, document.getElementById("out"), false)
+    if(validateURL(document.getElementById("url").value))
+      red.embed(document.getElementById("url").value, document.getElementById("out"), false)
   }
+  darkTheme = true
   function toggleTheme(){
     const theme_to_disable = darkTheme? 'dark-theme' : 'light-theme'
     const theme_to_enable = !darkTheme? 'dark-theme' : 'light-theme'
@@ -38,7 +52,7 @@
 
   <h2>Enter the url to preview:</h2>
 
-  <input type="text" class="form-control" value="https://www.reddit.com/r/test/comments/izb2ds/testing_post_parsing/about.json" id="url">
+  <input type="text" class="form-control" value="https://www.reddit.com/r/wallpapers/comments/5xq6no/decided_to_combine_two_of_my_favorite_wallpapers/about.json" id="url">
 
   <button type="button" onClick="load()" class="btn btn-primary mt-2">Load json</button>
   <button type="button" onClick="force_reload()" class="btn btn-primary mt-2">Force reload json</button>

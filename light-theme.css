@@ -5,6 +5,7 @@
   --reddit-blockquote: rgba(28, 28, 28, 0.2);
   --reddit-table-border: #eee;
   --reddit-code-bg: #F6F7F8;
+  --reddit-code: #FF006D;
   --reddit-spoiler-bg: #545452;
   --reddit-spoiler-bg-revealed: #5454521A;
 }

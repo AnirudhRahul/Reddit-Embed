@@ -3,39 +3,87 @@ var red = function(){
   // TEMPLATES
 
   /*
-    All templates take in named arguements,
-    feel free to add arguements if you want
-    to display additional data
+    All templates use named arguements
   */
-  const Title = ({
-  post_link,
-  title,
-  }) =>`
-  <a class="title" href="${post_link}">${title}</a>
-  `;
 
-  const Comment = ({
-  left_padding,
-  post_link,
-  author_name,
-  author_class,
-  comment_points,
-  point_plural,
-  time_ago,
-  body
-  }) =>`
-  <div class="comment" style="padding-left:${left_padding}px">
-      <div class="author-info">
-          <a href="${post_link}" class="${author_class}">${author_name}</a>
-          <span class="left-space">&nbsp${comment_points} point${point_plural}</span>
-          <span class="left-space bold">&#183;</span>
-          <span class="left-space"> ${time_ago}</span>
-      </div>
-      <div class="comment-body">
-        ${body}
-      </div>
-  </div>
-  `;
+//Split up post comments so they can easily be disabled
+const Post_Header = ({
+author_name,
+time_ago,
+post_points,
+point_plural,
+}) =>`
+<div class="author-info">
+    Posted by ${author_name}
+    <span class="left-space">&nbsp${post_points} point${point_plural}</span>
+    <span class="left-space bold">&#183;</span>
+    <span class="left-space"> ${time_ago}</span>
+</div>
+<div class="header-spacer"></div>
+`;
+const Post_Title = ({
+post_link,
+post_title,
+}) =>`
+<a class="title" href="${post_link}">${post_title}</a>
+<div class="title-spacer"></div>
+`;
+const Post_Body = ({
+post_body,
+}) =>`
+<div class="comment-body">
+  ${post_body}
+</div>
+`;
+
+const Post_Image_Body = ({
+post_src,
+post_src_set,
+post_image_link,
+}) =>`
+<a href="${post_image_link}" target="_blank">
+  <img srcset="${post_src_set}" src="${post_src}">
+  </img>
+</a>
+`;
+
+const Post = ({
+left_padding,
+post_header,
+post_title,
+post_body,
+}) =>`
+<div class="comment" style="padding-left:${left_padding}px">
+  ${post_header}
+  ${post_title}
+  ${post_body}
+</div>
+`;
+
+const Comment = ({
+left_padding,
+post_link,
+author_name,
+author_class,
+comment_points,
+point_plural,
+time_ago,
+body
+}) =>`
+<div class="comment" style="padding-left:${left_padding}px">
+    <div class="author-info">
+        <a href="${post_link}" class="${author_class}">${author_name}</a>
+        <span class="left-space">&nbsp${comment_points} point${point_plural}</span>
+        <span class="left-space bold">&#183;</span>
+        <span class="left-space"> ${time_ago}</span>
+    </div>
+    <div class="comment-body">
+      ${body}
+    </div>
+</div>
+`;
+
+// END OF TEMPLATE SECTION
 
 const msPerSecond = 1000;
 const msPerMinute = msPerSecond * 60;
@@ -44,23 +92,22 @@ const msPerDay = msPerHour * 24;
 const msPerMonth = msPerDay * 30;
 const msPerYear = msPerDay * 365;
 
-const cache_timeout = 30*msPerMinute
 const defaults = {
-  cache_timeout: msPerHour,
+  cache_timeout: 10*msPerMinute,
   use_cache: true,
+  show_post: true, // Note setting this to false will override the 3 options below
   show_post_title: true,
-  //TODO create better post support
-  show_post: true,
+  show_post_header: true,
+  show_post_body: true,
+  post_padding: 0,
   show_comments: true,
-  ignore_bot_comments: true,
   ignore_sticky_comments: false,
-  depth_limit: -1,
-  comment_limit: [],
+  max_depth: -1,
   open_links_in_new_tab: true,
-  recent_post_threshold: 15*msPerMinute,
-  depth_padding: 24,
+  padding_per_depth: 24,
   initial_padding: 8,
-  support_spoiler_links: true,
+  improve_spoiler_links: true,
+  recent_post_threshold: 15*msPerMinute,
 }
 const spoiler_links = ['/s', '#s', '/spoiler', '#spoiler']
 
@@ -88,19 +135,24 @@ function embed(url, div, opts = defaults){
   const cached_json = tryJson(sessionStorage.getItem(url))
   if (opts.use_cache && cached_json && Date.now() < cached_json.expire_time) {
     renderDiv(JSON.parse(cached_json.response), div, opts)
-    console.log("Used Cache")
+    console.log("Used cache")
   }
   else{
     console.log("Requesting JSON from reddit: " + url)
     const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onload = () => {
-      if(opts.use_cache)
+      const parsed_response = JSON.parse(xhr.responseText)
+      renderDiv(parsed_response, div, opts);
+      const post_created_utc = parsed_response[0].data.children[0].data.created_utc
+      const is_new_post = (Date.now() - post_created_utc*1000) < opts.recent_post_threshold
+      if(opts.use_cache && !is_new_post){
         sessionStorage.setItem(url, JSON.stringify({
           response: xhr.responseText,
           expire_time: Date.now() + opts.cache_timeout
         }));
-      renderDiv(JSON.parse(xhr.responseText), div, opts);
+        console.log("Saved to cache")
+      }
     }
     xhr.send();
   }
@@ -114,11 +166,7 @@ function tryJson(str) {
     }
 }
 
-function loadJSON(url){
-
-}
-
-// Very useful helper function for renderDiv
+// Helper functions for renderDiv
 function timeDifference(current, previous) {
     const elapsed = current - previous;
     const units = [msPerSecond, msPerMinute, msPerHour, msPerDay, msPerMonth, msPerYear, Number.MAX_VALUE]
@@ -160,19 +208,73 @@ function renderDiv(response, div, opts = defaults){
   const outputHTML = []
   const post_data = response[0].data.children[0].data
   const comments = response[1].data.children
+  window.comments = comments
+  window.post_data = post_data
 
-  if(opts.show_post_title)
-    outputHTML.push(Title({
-      title: post_data.title,
-      post_link: post_data.url
-    }))
 
 
   // Renders post seperately since json structure
   // is much different from a comment
   if(opts.show_post){
-    console.log(post_data)
+    post_data.score = formatScore(post_data.score)
+    const post_header = Post_Header({
+      author_name: post_data.author,
+      time_ago: timeDifference(Date.now(), post_data.created_utc*1000),
+      post_points: post_data.score,
+      point_plural: post_data.score == 1 ? '':'s',
+    })
+    const post_title = Post_Title({
+      post_link: 'https://reddit.com'+post_data.permalink,
+      post_title: post_data.title,
+    })
+    let post_body = ''
+    // Regular text post
+    if(post_data.selftext_html){
+      post_body = Post_Body({
+        post_body:he.decode(post_data.selftext_html)
+      })
+    }
+    // Video or Image post
+    else if(post_data.post_hint){
+      if(post_data.post_hint == 'image'){
+        let preview_default_src = ''
+        let preview_src_set = ''
+        if(post_data.preview.images){
+          for(image_object of post_data.preview.images[0].resolutions){
+            preview_src_set += image_object.url + ' ' + image_object.width + 'w, '
+          }
+          preview_default_src = post_data.preview.images[0].source.url
+        }
+        console.log(preview_src_set, preview_default_src)
+        post_body = Post_Image_Body({
+          post_src: preview_default_src,
+          post_src_set: preview_src_set,
+          post_image_link: post_data.url,
+        })
 
+      }
+      else if(post_data.post_hint == 'video'){
+
+      }
+      else{
+        console.error("Uhhh I haven't seen this post hint before")
+      }
+
+    }
+    // Link only post
+    else if(post_data.url){
+      post_body = Post_Body({
+        post_body: '<a href="' + post_data.url + '">' + post_data.url + '</a>'
+      })
+    }
+
+    const post = Post({
+      left_padding: opts.post_padding,
+      post_header: opts.show_post_header ? post_header:'',
+      post_title: opts.show_post_title ? post_title:'',
+      post_body: opts.show_post_body ? post_body:'',
+    })
+    outputHTML.push(post)
   }
 
   // List containing all the comment data to be rendered
@@ -181,20 +283,26 @@ function renderDiv(response, div, opts = defaults){
   if(opts.show_comments)
     for(let i=comments.length-1; i>=0; i--){
       //Ignores random blank comments with no html
-      if(comments[i].data.body_html)
+      if(comments[i].data.body_html){
+        if(opts.ignore_sticky_comments && comments[i].data.stickied)
+          continue
         commentQ.push({
           item_data: comments[i].data,
           depth: 0
         })
+      }
     }
 
   const now = Date.now()
-  initial_shift = 8
-  shift_diff = 24
+  initial_shift = opts.initial_padding
+  shift_diff = opts.padding_per_depth
   while(commentQ.length > 0){
 
     const {item_data, depth} = commentQ.pop()
     item_data.score = formatScore(item_data.score)
+
+    if(opts.max_depth>=0 && depth > opts.max_depth)
+      continue
 
     const comment = Comment({
       left_padding: initial_shift + shift_diff * depth,
@@ -225,10 +333,10 @@ function renderDiv(response, div, opts = defaults){
 
   // Post-processing rendered html
   for(anchor of div.getElementsByTagName('a')){
-    if(opts.support_spoiler_links && spoiler_links.includes(anchor.getAttribute('href'))){
+    if(opts.improve_spoiler_links && spoiler_links.includes(anchor.getAttribute('href'))){
       // Visual indicator for spoiler links
       anchor.innerHTML += '<sup class="expand-button">+</sup>'
-      // Make the link literally do nothing, and add a helpful message for noobs
+      // Show the user an alert when clicking a spoiler link
       anchor.href = '#'
       anchor.setAttribute('onclick', 'alert("This is a spoiler link, hover over it to see the spoiler text"); return false;')
     }
@@ -238,7 +346,7 @@ function renderDiv(response, div, opts = defaults){
     }
   }
 
-  // Make spoilers tags toggle when clicked 
+  // Make spoiler tags toggle when clicked
   for(spoiler of div.getElementsByClassName('md-spoiler-text')){
     spoiler.setAttribute('onclick', "this.setAttribute('class', 'md-spoiler-revealed')")
   }
