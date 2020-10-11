@@ -297,9 +297,42 @@ and comment body */
 .reddit-embed img{
 	display: block;
   max-width: 100%;
+	max-height: 840px;
   position: relative;
   margin: 0 auto;
 }
+.reddit-embed .image-container{
+	margin: 0 auto;
+	position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+/* Videos */
+.reddit-embed video{
+	display: block;
+  max-width: 100%;
+	max-height: 720px;
+	position: relative;
+	margin: 0 auto;
+}
+.reddit-embed video[poster]{
+	object-fit: cover;
+	max-width: 100%;
+	max-height: 720px;
+}
+.reddit-embed .video-container{
+	margin: 0 auto;
+	position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+
 
 /* Code */
 .reddit-embed code{

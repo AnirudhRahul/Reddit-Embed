@@ -41,10 +41,22 @@ post_src,
 post_src_set,
 post_image_link,
 }) =>`
-<a href="${post_image_link}" target="_blank">
-  <img srcset="${post_src_set}" src="${post_src}">
-  </img>
-</a>
+<div class="image-container">
+  <a href="${post_image_link}" target="_blank">
+    <img srcset="${post_src_set}" src="${post_src}">
+    </img>
+  </a>
+</div>
+`;
+
+const Post_Video_Body = ({
+video_src,
+poster_src,
+}) =>`
+<div class="video-container">
+    <video src="${video_src}" poster="${poster_src}" preload="auto" playsinline controls>
+    </video>
+</div>
 `;
 
 const Post = ({
@@ -126,7 +138,7 @@ function setDefaults(newDefaults) {
 function add_missing_defaults(opts){
   // Fill in missings defaults from opts
   for(key in defaults)
-    if(!(key in opts))
+    if(!opts.hasOwnProperty(key))
       opts[key] = defaults[key]
 }
 
@@ -187,8 +199,8 @@ function timeDifference(current, previous) {
 function formatScore(score){
   // Converts score to string if it's large
   if(score > 999){
-    const thousands = Math.round(score/1000)
-    const hundreds = Math.round(score/100) % 10
+    const thousands = Math.floor(score/1000)
+    const hundreds = Math.floor(score/100) % 10
     if(hundreds==0){
       return thousands + 'k'
     }
@@ -240,21 +252,30 @@ function renderDiv(response, div, opts = defaults){
         let preview_default_src = ''
         let preview_src_set = ''
         if(post_data.preview.images){
-          for(image_object of post_data.preview.images[0].resolutions){
+          let target = post_data.preview.images[0]
+          //Use gif source if it's available
+          if(target.variants && target.variants.gif){
+            target = target.variants.gif
+          }
+
+          for(image_object of target.resolutions){
             preview_src_set += image_object.url + ' ' + image_object.width + 'w, '
           }
-          preview_default_src = post_data.preview.images[0].source.url
+          preview_default_src = target.source.url
         }
-        console.log(preview_src_set, preview_default_src)
         post_body = Post_Image_Body({
           post_src: preview_default_src,
           post_src_set: preview_src_set,
           post_image_link: post_data.url,
         })
-
       }
-      else if(post_data.post_hint == 'video'){
-
+      else if(post_data.post_hint == 'hosted:video'){
+        post_body = Post_Video_Body({
+          video_src: post_data.media.reddit_video.fallback_url,
+          poster_src: post_data.preview.images[0].source.url,
+          // width: post_data.media.reddit_video.width,
+          // height: post_data.media.reddit_video.height,
+        })
       }
       else{
         console.error("Uhhh I haven't seen this post hint before")
