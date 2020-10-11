@@ -125,7 +125,7 @@ const spoiler_links = ['/s', '#s', '/spoiler', '#spoiler']
 
 
 function setDefaults(newDefaults) {
-  for(key in newDefaults){
+  for(const key in newDefaults){
     if(key in newDefaults){
       defaults[key] = newDefaults[key]
     }
@@ -137,7 +137,7 @@ function setDefaults(newDefaults) {
 
 function add_missing_defaults(opts){
   // Fill in missings defaults from opts
-  for(key in defaults)
+  for(const key in defaults)
     if(!opts.hasOwnProperty(key))
       opts[key] = defaults[key]
 }
@@ -258,7 +258,7 @@ function renderDiv(response, div, opts = defaults){
             target = target.variants.gif
           }
 
-          for(image_object of target.resolutions){
+          for(const image_object of target.resolutions){
             preview_src_set += image_object.url + ' ' + image_object.width + 'w, '
           }
           preview_default_src = target.source.url
@@ -354,7 +354,7 @@ function renderDiv(response, div, opts = defaults){
   div.innerHTML = outputHTML.join('\n')
 
   // Post-processing rendered html
-  for(anchor of div.getElementsByTagName('a')){
+  for(const anchor of div.getElementsByTagName('a')){
     if(opts.improve_spoiler_links && spoiler_links.includes(anchor.getAttribute('href'))){
       // Visual indicator for spoiler links
       anchor.innerHTML += '<sup class="expand-button">+</sup>'
@@ -369,7 +369,7 @@ function renderDiv(response, div, opts = defaults){
   }
 
   // Make spoiler tags toggle when clicked
-  for(spoiler of div.getElementsByClassName('md-spoiler-text')){
+  for(const spoiler of div.getElementsByClassName('md-spoiler-text')){
     spoiler.setAttribute('onclick', "this.setAttribute('class', 'md-spoiler-revealed')")
   }
 
