@@ -1,3 +1,55 @@
+/*
+   CSS Reset for consistency
+   http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+.reddit-embed html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+.reddit-embed article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+.reddit-embed body {
+	line-height: 1;
+}
+.reddit-embed ol, ul {
+	list-style: none;
+}
+.reddit-embed blockquote, q {
+	quotes: none;
+}
+.reddit-embed blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+.reddit-embed table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* Reddit font faces */
 @font-face {
     font-family: "Noto Sans";
     src: url("Reddit-Noto-Sans.woff2");
@@ -19,7 +71,7 @@
   font-weight:700;
 }
 
-:root {
+.reddit-embed:root {
   --reddit-text: #fff;
   --reddit-link: #3498db;
   --reddit-text-muted: #adb5bd;
@@ -55,7 +107,7 @@ in a reddit-embed div */
 .reddit-embed .author-info{
   font-size: 15px;
   font-family: IBMPlexSans, Arial, sans-serif;
-  min-height: 18px;
+  min-height: 20px;
   word-break: break-word;
   align-items: center;
   color: var(--reddit-text-muted);
@@ -73,7 +125,7 @@ in a reddit-embed div */
   text-decoration: none;
 }
 .reddit-embed .bold{
-  font-weight: 700;
+  font-weight: 1000;
 }
 .reddit-embed .left-space{
   padding-left: 4px;
@@ -83,7 +135,12 @@ in a reddit-embed div */
 /* Vertical padding between author-info
 and comment body */
 .reddit-embed .comment-body {
-  padding: 3px 0;
+  padding: 4px 0;
+}
+
+.reddit-embed .md {
+  line-height: 26px;
+  word-break: break-word;
 }
 
 /* Spacing between each comment */
@@ -120,34 +177,55 @@ and comment body */
   padding-top: 0;
 }
 
+.reddit-embed strong{
+  font-weight: 1000;
+}
+
+.reddit-embed em{
+  font-style: italic;
+}
+
+.reddit-embed sup{
+  position: relative;
+  font-size: .7em;
+  line-height: .7em;
+  top: -.4em;
+}
+
 /* Header Tags */
 .reddit-embed h1{
   font-size: 28px;
+  line-height: 32px;
   margin-bottom: 8px;
   margin-top: 1.4em;
 }
 .reddit-embed h2{
   font-size: 25px;
+  line-height: 29px;
   margin-bottom: 8px;
   margin-top: 1.4em;
 }
 .reddit-embed h3{
   font-size: 22px;
+  line-height: 26px;
   margin-bottom: 8px;
   margin-top: 1.4em;
 }
 .reddit-embed h4{
   font-size: 20px;
+  line-height: 24px;
   margin-bottom: 8px;
   margin-top: 1.4em;
 }
 .reddit-embed h5{
   font-size: 18px;
+  line-height: 22px;
   margin-bottom: 8px;
   margin-top: 1.4em;
 }
 .reddit-embed h6{
   font-size: 15px;
+  line-height: 19px;
   margin-bottom: 8px;
   margin-top: 1.4em;
 }
@@ -219,15 +297,23 @@ and comment body */
 
 .reddit-embed .md-spoiler-text {
   background: var(--reddit-spoiler-bg);
-  border-radius: 2px;
+  border-radius: 2.35px;
   transition: background 1s ease-out;
   color: rgba(0,0,0,0);
   cursor: pointer;
+  /*
+    Make text unselectable
+  */
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .reddit-embed .md-spoiler-revealed {
   background: var(--reddit-spoiler-bg-revealed);
-  border-radius: 2px;
+  border-radius: 2.35px;
   transition: background 1s ease-out;
 }
 
