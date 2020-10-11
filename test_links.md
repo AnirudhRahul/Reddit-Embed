@@ -7,11 +7,13 @@
 # Post Types
 * [Just a Link Example](https://www.reddit.com/r/datasets/comments/j8t888/6_ways_to_get_news_data_online/about.json)
 
-* [Native Image Shooting Star](https://www.reddit.com/r/wallpapers/comments/gayrju/the_shooting_star_3840x2160/about.json) 
-
+* [Native Image Wallpaper](https://www.reddit.com/r/wallpapers/comments/5xq6no/decided_to_combine_two_of_my_favorite_wallpapers/about.json)
+  
   * Current default
 
-* [Native Image Wallpaper](https://www.reddit.com/r/wallpapers/comments/5xq6no/decided_to_combine_two_of_my_favorite_wallpapers/about.json)
+* [Native Image 4k Shooting Star](https://www.reddit.com/r/wallpapers/comments/gayrju/the_shooting_star_3840x2160/about.json) 
+
+* [Native Image Mars](https://www.reddit.com/r/pics/comments/a89m64/water_ice_on_mars_just_shot_by_the_esa/about.json)	
 
 * [External Image Keanu](https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json)
 
