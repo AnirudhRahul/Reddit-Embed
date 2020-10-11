@@ -105,8 +105,6 @@ const msPerMonth = msPerDay * 30;
 const msPerYear = msPerDay * 365;
 
 const defaults = {
-  cache_timeout: 10*msPerMinute,
-  use_cache: true,
   show_post: true, // Note setting this to false will override the 3 options below
   show_post_title: true,
   show_post_header: true,
@@ -119,7 +117,6 @@ const defaults = {
   padding_per_depth: 24,
   initial_padding: 8,
   improve_spoiler_links: true,
-  recent_post_threshold: 15*msPerMinute,
 }
 const spoiler_links = ['/s', '#s', '/spoiler', '#spoiler']
 
@@ -144,38 +141,13 @@ function add_missing_defaults(opts){
 
 function embed(url, div, opts = defaults){
   add_missing_defaults(opts)
-  const cached_json = tryJson(sessionStorage.getItem(url))
-  if (opts.use_cache && cached_json && Date.now() < cached_json.expire_time) {
-    renderDiv(JSON.parse(cached_json.response), div, opts)
-    console.log("Used cache")
+  console.log("Requesting JSON from reddit: " + url)
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.onload = () => {
+    renderDiv(JSON.parse(xhr.responseText), div, opts);
   }
-  else{
-    console.log("Requesting JSON from reddit: " + url)
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.onload = () => {
-      const parsed_response = JSON.parse(xhr.responseText)
-      renderDiv(parsed_response, div, opts);
-      const post_created_utc = parsed_response[0].data.children[0].data.created_utc
-      const is_new_post = (Date.now() - post_created_utc*1000) < opts.recent_post_threshold
-      if(opts.use_cache && !is_new_post){
-        sessionStorage.setItem(url, JSON.stringify({
-          response: xhr.responseText,
-          expire_time: Date.now() + opts.cache_timeout
-        }));
-        console.log("Saved to cache")
-      }
-    }
-    xhr.send();
-  }
-}
-
-function tryJson(str) {
-    try {
-        return JSON.parse(str);
-    } catch (e) {
-        return false;
-    }
+  xhr.send();
 }
 
 // Helper functions for renderDiv
@@ -378,8 +350,8 @@ function renderDiv(response, div, opts = defaults){
 
 
   return{
-    embed: embed
-
+    embed: embed,
+    setDefaults: setDefaults
   }
 
 }();
