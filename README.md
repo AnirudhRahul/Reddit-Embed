@@ -54,7 +54,7 @@ Via CDN:
 
 ## Testing
 
-If you want to see what a variety of different posts look like when they are embedded I would reccomend checking out [test_links.md](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/test_links.md)
+If you want to see what a variety of different posts look like when they are embedded I would recommend checking out [test_links.md](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/test_links.md)
 
 
 # Documentation
@@ -79,19 +79,19 @@ And then you can just add this markup to your website with the red-href attribut
 ```
 Note that we have to import light-theme.css because red.css defaults to a dark theme with white text
 
-If you wan't a similiar basic example, with some more detailed documentaiton go  to [basic-demo.html](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/demos/basic_demo.html)
+If you want a similar basic example, with some more detailed documentation go  to [basic-demo.html](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/demos/basic_demo.html)
 
-If you wan't an even more advanced example you can take a look at the [source for the GH pages demo](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/index.html)
+If you want an even more advanced example you can take a look at the [source for the GH pages demo](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/index.html)
 
 ## Methods
 ### `red.embed(url, div, opts = defaults)`
 * `url` : absolute url that points to an about.json file for a reddit post
 * `div` : javascript DOM element that we want to add content to
-* `opts`: optional arguement, specifying any options we want to override from the defaults
+* `opts`: optional argument, specifying any options we want to override from the defaults
 
 Sends an xhr request to get the json file from `url`
 
-And then renders the content recieved onto `div`
+And then renders the content received onto `div`
 
 ### `red.embedAll()`
 Loops through reddit-embed divs, and calls `red.embed` on them if they have a valid link in their `red-href` attribute.
@@ -158,7 +158,7 @@ These values were chosen because they closely resemble the size of their respect
 ## Color Palettes
 Making your own color palette for Reddit-Embed is as simple as creating a css file
 
-Create a css file similiar to [css/dark-theme.css](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/css/dark-theme.css) or [css/light-theme.css](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/css/light-theme.css) by modifying the colors of each css variable
+Create a css file similar to [css/dark-theme.css](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/css/dark-theme.css) or [css/light-theme.css](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/css/light-theme.css) by modifying the colors of each css variable
 
 Then import your palette css file **after** red.css
 
@@ -169,7 +169,7 @@ Then import your palette css file **after** red.css
 
 
 ## Fork Ideas
-* Make a wordpress plugin that wraps this library
+* Make a WordPress plugin that wraps this library
 
 ## Use cases
 * Add reddit posts to your blog
