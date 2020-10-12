@@ -3,7 +3,7 @@
 [![PR's Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)  
 
 <p align="center">
-<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/reddit-embed-example.png"/>
+<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/reddit-embed-example.png?raw=true"/>
 </p>
 
 Reddit-Embed is a javascript plugin that lets you embed reddit posts onto your website, through the power of client-side rendering.
