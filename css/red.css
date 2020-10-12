@@ -52,22 +52,22 @@ q:before, .reddit-embed q:after {
 /* Reddit font faces */
 @font-face {
     font-family: "Noto Sans";
-    src: url("Reddit-Noto-Sans.woff2");
+    src: url("fonts/Reddit-Noto-Sans.woff2");
 }
 
 @font-face {
     font-family: "Noto Mono";
-    src: url("Reddit-Noto-Mono.woff2");
+    src: url("fonts/Reddit-Noto-Mono.woff2");
 }
 
 @font-face{
   font-family: "IBMPlexSans";
-  src: url("Reddit-IBMPlexSans.woff2");
+  src: url("fonts/Reddit-IBMPlexSans.woff2");
 }
 
 @font-face{
   font-family:"IBMPlexSans";
-  src:url("Reddit-IBMPlexSans-Bold.woff2") ;
+  src:url("fonts/Reddit-IBMPlexSans-Bold.woff2") ;
   font-weight:700;
 }
 
