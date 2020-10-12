@@ -159,9 +159,7 @@ function embedAll(){
       continue
     if(div.hasAttribute("red-opts")){
       try{
-        let specific_opts = JSON.parse(div.getAttribute("red-opts"))
-        add_missing_defaults(specific_opts)
-        opts = specific_opts
+        opts = JSON.parse(div.getAttribute("red-opts"))
       }catch(e){console.error(e)}
     }
     embed(div.getAttribute("red-href"), div, opts)
