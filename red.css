@@ -76,6 +76,7 @@ q:before, .reddit-embed q:after {
   --reddit-link: #3498db;
   --reddit-text-muted: #adb5bd;
   --reddit-blockquote: #adb5bd;
+	--reddit-line-seperator: rgba(245, 245, 255, 0.75);
   --reddit-table-border: #adb5bd;
   --reddit-code-bg: #F6F7F822;
   --reddit-inline-code: #FF006D;
@@ -116,6 +117,18 @@ in a reddit-embed div */
 }
 .reddit-embed .title-spacer {
   min-height: 16px;
+}
+
+/* Comment header styling*/
+.reddit-embed .comment-header{
+	font-size: 24px;
+  line-height: 27px;
+	margin: 0;
+}
+.reddit-embed .comment-seperator{
+	margin: 0;
+	border-top: 2px solid var(--reddit-line-seperator);
+	margin-top: 2px;
 }
 
 /* Styling for author-info section of a
@@ -291,6 +304,13 @@ and comment body */
 .reddit-embed td{
   border: 1px solid var(--reddit-table-border);
   padding: 4px 8px;
+}
+
+.reddit-embed hr{
+	border: 0;
+  border-top: 1px solid var(--reddit-line-seperator);
+	height: 1px;
+	margin: 12px 0;
 }
 
 /* Images */

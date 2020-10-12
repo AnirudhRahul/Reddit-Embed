@@ -110,7 +110,8 @@ const defaults = {
   show_post_header: true,
   show_post_body: true,
   post_padding: 0,
-  show_comments: true,
+  show_comments_section: true,
+  show_comments_section_header: true,
   ignore_sticky_comments: false,
   max_depth: -1,
   open_links_in_new_tab: true,
@@ -271,10 +272,18 @@ function renderDiv(response, div, opts = defaults){
     outputHTML.push(post)
   }
 
+  if(opts.show_comments_section && opts.show_comments_section_header){
+    outputHTML.push(`
+      <h3 class="comment-header">Comments</h3>
+      <hr class="comment-seperator"/>
+
+      `)
+  }
+
   // List containing all the comment data to be rendered
   const commentQ = []
 
-  if(opts.show_comments)
+  if(opts.show_comments_section)
     for(let i=comments.length-1; i>=0; i--){
       //Ignores random blank comments with no html
       if(comments[i].data.body_html){
