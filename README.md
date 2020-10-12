@@ -47,6 +47,28 @@ Via CDN:
 # Documentation
 
 ## Getting Started
+First your need to find a reddit post you want to embed.
+Once you have found a reddit post copy the url and add /about.json to the end so it looks something like this:
+
+`https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json`
+
+And then you can throw your link into this basic template
+
+```HTML
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/light-theme.css"/>
+<script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed/red.js"></script>
+<script>
+  window.onload = red.embedAll
+</script>
+<div class="reddit-embed" red-href="your_link_goes_here"</div>
+```
+Note that we have to import light-theme.css because red.css defaults to a dark theme with white text
+
+If you wan't a similiar basic example, with some more detailed documentaiton go  to [basic-demo.html](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/demos/basic_demo.html)
+
+If you wan't an even more advanced example you can take a look at the [source for the GH pages demo](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/index.html)
 
 ## Options
 
@@ -56,9 +78,10 @@ Via CDN:
 *  `show_post_header: Boolean`
 *  `show_post_body: Boolean`
 *  `show_comments_section: Boolean`
+	* Overrides all other show_comments_section options if set to false
 *  `show_comments_section_header: Boolean`
 *  `ignore_sticky_comments: Boolean`
-	* Will skip stick comments in the render queue
+	* Will skip any stickied comments in the render queue
 *  `max_depth: -1`
 	* Will only render comments with a depth <= max_depth, note that depth is 0 indexed so max_depth=0 will render the top layer of comments
 	* max_depth is ignored if its < 0
