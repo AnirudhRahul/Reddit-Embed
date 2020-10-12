@@ -49,9 +49,33 @@ Via CDN:
 ## Getting Started
 
 ## Options
-Visual indicator for spoiler links
 
-![Spoiler Link Demonstration](https://media.giphy.com/media/3TxpzkvjxlSSm97ROw/giphy.gif)
+*  `show_post: Boolean`
+	* Overrides all other show_post options if set to false
+*  `show_post_title: Boolean`
+*  `show_post_header: Boolean`
+*  `show_post_body: Boolean`
+*  `show_comments_section: Boolean`
+*  `show_comments_section_header: Boolean`
+*  `ignore_sticky_comments: Boolean`
+	* Will skip stick comments in the render queue
+*  `max_depth: -1`
+	* Will only render comments with a depth <= max_depth, note that depth is 0 indexed so max_depth=0 will render the top layer of comments
+	* max_depth is ignored if its < 0
+*  `open_links_in_new_tab: true`
+*  `padding_per_depth: 24`
+	* Horizontal spacing between each layer of comments
+*  `initial_padding: 4`
+	* Horizontal spacing for first layer of comments
+*  `improve_spoiler_links: true`
+	* Adds a Visual indicator for spoiler links 
+	
+	![Spoiler Link Demonstration](https://media.giphy.com/media/3TxpzkvjxlSSm97ROw/giphy.gif)
+
+
+
+
+
 
 ## Styling Tips
 Some css attributes you may want to override are:
