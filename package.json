@@ -1,7 +1,7 @@
 {
   "name": "reddit-embed",
-  "version": "1.0.2",
-  "description": "Client side script that can embed any reddit posts onto your website natively",
+  "version": "1.0.3",
+  "description": "Client side script that can embed any reddit post onto your website!",
   "main": "red.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,11 @@
   },
   "keywords": [
     "reddit",
-    "javascript"
+    "javascript",
+    "reddit-client",
+    "reddit-post",
+    "embed-comments",
+    "client-side"
   ],
   "author": "anirudhrahul",
   "license": "MIT",

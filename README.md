@@ -23,7 +23,7 @@ Reddit-Embed is a javascript plugin that lets you embed reddit posts onto your w
 
 ## Installation
 
-Via npm:
+Via [npm](https://www.npmjs.com/package/reddit-embed):
 
 ```
 npm install reddit-embed

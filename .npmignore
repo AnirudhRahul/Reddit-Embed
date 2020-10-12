@@ -1,2 +1,5 @@
 node_modules
 demos
+index.html
+*.png
+test_links.md
