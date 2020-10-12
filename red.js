@@ -151,6 +151,27 @@ function embed(url, div, opts = defaults){
   xhr.send();
 }
 
+// Stateless by design
+// Extracts all data needed from HTML attributes
+// Should only be called after the HTML has loaded!
+function embedAll(){
+  let opts = defaults
+  for(const div of document.getElementsByClassName("reddit-embed")){
+    if(!div.hasAttribute("red-href"))
+      continue
+    if(div.hasAttribute("red-opts")){
+      try{
+        let specific_opts = JSON.parse(div.getAttribute("red-opts"))
+        add_missing_defaults(specific_opts)
+        opts = specific_opts
+      }catch(e){console.error(e)}
+    }
+    embed(div.getAttribute("red-href"), div, opts)
+    // Reset options
+    opts = defaults
+  }
+}
+
 // Helper functions for renderDiv
 function timeDifference(current, previous) {
     const elapsed = current - previous;
@@ -360,7 +381,8 @@ function renderDiv(response, div, opts = defaults){
 
   return{
     embed: embed,
-    setDefaults: setDefaults
+    setDefaults: setDefaults,
+    embedAll: embedAll,
   }
 
 }();
