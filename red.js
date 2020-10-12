@@ -364,3 +364,6 @@ function renderDiv(response, div, opts = defaults){
   }
 
 }();
+
+exports.embed = red.embed
+exports.setDefaults = red.setDefaults

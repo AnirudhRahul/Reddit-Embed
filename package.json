@@ -1,0 +1,26 @@
+{
+  "name": "reddit-embed",
+  "version": "0.1.0",
+  "description": "Client side script that can embed any reddit posts onto your website natively",
+  "main": "red.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnirudhRahul/Reddit-Embed.git"
+  },
+  "keywords": [
+    "reddit",
+    "javascript"
+  ],
+  "author": "anirudhrahul",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnirudhRahul/Reddit-Embed/issues"
+  },
+  "homepage": "https://github.com/AnirudhRahul/Reddit-Embed#readme",
+  "dependencies": {
+    "he": "^1.2.0"
+  }
+}
