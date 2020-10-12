@@ -268,6 +268,11 @@ function renderDiv(response, div, opts = defaults){
       else if(post_data.post_hint == 'rich:video'){
         post_body = '<div class="video-container">' + he.decode(post_data.media_embed.content) + '</div>'
       }
+      else if(post_data.post_hint == 'link'){
+        post_body = Post_Body({
+          post_body: '<a href="' + post_data.url + '">' + post_data.url + '</a>'
+        })
+      }
       else{
         console.error("Uhhh I haven't seen this post hint before: " + post_data.post_hint)
       }
