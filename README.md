@@ -52,7 +52,7 @@ Once you have found a reddit post copy the url and add /about.json to the end so
 
 `https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json`
 
-And then you can throw your link into this basic template
+And then you can just add this markup to your website with the red-href attribute filled in
 
 ```HTML
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/red.css"/>
@@ -69,6 +69,25 @@ Note that we have to import light-theme.css because red.css defaults to a dark t
 If you wan't a similiar basic example, with some more detailed documentaiton go  to [basic-demo.html](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/demos/basic_demo.html)
 
 If you wan't an even more advanced example you can take a look at the [source for the GH pages demo](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/index.html)
+
+## Methods
+### red.embed(url, div, opts = defaults)
+* url : absolute url that points to an about.json file for a reddit post
+* div : javascript DOM element that we want to add contents to
+* opts: optional arguement, specifying any options we want to override from the defaults
+
+Embeds the contents of *url* into *div*
+
+### red.embedAll()
+Loops through reddit-embed divs, and embeds content in them if the have a valid link in their red-href attribute.
+
+Also note that a red-opts attribute containing a JSON object of options to override from default is also supported.
+
+Note that this function should only be called after a page's HTML has finished loading
+
+### red.setDefaults(newDefaults)
+* newDefaults: And object containing all or some of the options specified in the section below
+
 
 ## Options
 
