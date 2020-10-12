@@ -1,14 +1,69 @@
 # Reddit-Embed
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![PR's Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)  
+
 Client side script to embed comments from a reddit post
 
+## Features
+* No Reddit API key needed!
 
-## Bonus Features
+* No installation necessary, works perfectly through a CDN
+
+* Easily customizable color palette
+
+* Client-side rendered
+
+* Easy to use
+
+# Documentation
+
+## Getting Started
+
+## Options
 Visual indicator for spoiler links
 
 ![Spoiler Link Demonstration](https://media.giphy.com/media/3TxpzkvjxlSSm97ROw/giphy.gif)
 
-All post images use the srcset attribute
+## Styling Tips
+Some css attributes you may want to override are:
 
-```html
-<img srcset="https://preview.redd.it/59bsn5hgnojy.jpg?width=108&amp;crop=smart&amp;auto=webp&amp;s=8f69e3168735b4c4b957064d403ecb899f2e49bb 108w, https://preview.redd.it/59bsn5hgnojy.jpg?width=216&amp;crop=smart&amp;auto=webp&amp;s=b7e292358c67b385c8d5c1ab1d6f784f5d61a675 216w, https://preview.redd.it/59bsn5hgnojy.jpg?width=320&amp;crop=smart&amp;auto=webp&amp;s=cdc2a9788429455dfee459501f1215b9b118aefb 320w, https://preview.redd.it/59bsn5hgnojy.jpg?width=640&amp;crop=smart&amp;auto=webp&amp;s=8d7a88ae9068908dd53c237fb774648f18a5d70e 640w, https://preview.redd.it/59bsn5hgnojy.jpg?width=960&amp;crop=smart&amp;auto=webp&amp;s=23bcf37ecc3cd0c3bcf36205de3ae6ede2443ec0 960w, https://preview.redd.it/59bsn5hgnojy.jpg?width=1080&amp;crop=smart&amp;auto=webp&amp;s=6b09d5f7c02ff747ff6336a1877a2f5cdcbf3b8a 1080w, " src="https://preview.redd.it/59bsn5hgnojy.jpg?auto=webp&amp;s=c8b2bc79354f148fd55d928c24b935ee1f8b9d68">
+## Color Palettes
+Making your own color palette for Reddit-Embed is as simple as creating a css file
+
+Create a css file similiar to [css/dark-theme.css](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/css/dark-theme.css) or [css/light-theme.css](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/css/light-theme.css) by modifying the colors of each css variable
+
+Then import your palette css file **after** red.css
+
+```HTML
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/light-theme.css"/>
 ```
+
+
+## Testing
+
+If you want to see what a variety of different posts look like when they are embedded I would reccomend checking out [test_links.md](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/test_links.md)
+
+
+# Misc
+
+## Demos
+
+* https://anirudhrahul.github.io/Reddit-Embed/
+
+
+* https://anirudhrahul.github.io/Reddit-Embed/demos/basic_demo.html
+
+
+## Fork Ideas
+* Make a wordpress plugin that wraps this library
+
+## Use cases
+* Add reddit posts to your blog
+* Use reddit as the comment platform for your website
+* Use it in a browser extension to add reddit comments to other popular websites
+
+## Known Issues
+* Native reddit videos don't play any audio
+
+* Posts with multiple images or videos are not supported
