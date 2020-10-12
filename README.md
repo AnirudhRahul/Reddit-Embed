@@ -84,22 +84,22 @@ If you wan't a similiar basic example, with some more detailed documentaiton go 
 If you wan't an even more advanced example you can take a look at the [source for the GH pages demo](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/index.html)
 
 ## Methods
-### red.embed(url, div, opts = defaults)
-* url : absolute url that points to an about.json file for a reddit post
-* div : javascript DOM element that we want to add contents to
-* opts: optional arguement, specifying any options we want to override from the defaults
+### `red.embed(url, div, opts = defaults)`
+* `url` : absolute url that points to an about.json file for a reddit post
+* `div` : javascript DOM element that we want to add contents to
+* `opts`: optional arguement, specifying any options we want to override from the defaults
 
 Embeds the contents of *url* into *div*
 
-### red.embedAll()
-Loops through reddit-embed divs, and embeds content in them if the have a valid link in their red-href attribute.
+### `red.embedAll()`
+Loops through reddit-embed divs, and calls `red.embed` on them if they have a valid link in their `red-href` attribute.
 
-Also note that a red-opts attribute containing a JSON object of options to override from default is also supported.
+Also note that a `red-opts` attribute containing a JSON object of options to override from default is also supported.
 
 Note that this function should only be called after a page's HTML has finished loading
 
-### red.setDefaults(newDefaults)
-* newDefaults: And object containing all or some of the options specified in the section below
+### `red.setDefaults(newDefaults)`
+* `newDefaults`: An object containing all or some of the options specified in the section below
 
 
 ## Options
