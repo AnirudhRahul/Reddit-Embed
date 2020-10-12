@@ -7,7 +7,7 @@
    to change at the start of a NEW script tag */
   red.setDefaults({
     show_comments_section_header:false,
-    post_padding: 100,
+    initial_padding: 100,
   })
   // Call embedAll after HTML content is loaded
   window.onload = red.embedAll
@@ -15,4 +15,4 @@
 <!-- Make sure any div you use has the reddit-embed class or embedAll() won't target it -->
 <!-- Note that options specified here will override defaults -->
 <!-- Also note that the opts attribute must be valid JSON -->
-<div class="reddit-embed" red-opts='{"post_padding": 6}' red-href="https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json" ></div>
+<div class="reddit-embed" red-opts='{"initial_padding": 10}' red-href="https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json" ></div>

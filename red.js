@@ -60,12 +60,11 @@ poster_src,
 `;
 
 const Post = ({
-left_padding,
 post_header,
 post_title,
 post_body,
 }) =>`
-<div class="comment" style="padding-left:${left_padding}px">
+<div class="comment">
   ${post_header}
   ${post_title}
   ${post_body}
@@ -109,7 +108,6 @@ const defaults = {
   show_post_title: true,
   show_post_header: true,
   show_post_body: true,
-  post_padding: 0,
   show_comments_section: true,
   show_comments_section_header: true,
   ignore_sticky_comments: false,
@@ -285,7 +283,6 @@ function renderDiv(response, div, opts = defaults){
     }
 
     const post = Post({
-      left_padding: opts.post_padding,
       post_header: opts.show_post_header ? post_header:'',
       post_title: opts.show_post_title ? post_title:'',
       post_body: opts.show_post_body ? post_body:'',
@@ -295,9 +292,10 @@ function renderDiv(response, div, opts = defaults){
 
   if(opts.show_comments_section && opts.show_comments_section_header){
     outputHTML.push(`
-      <h3 class="comment-header">Comments</h3>
-      <hr class="comment-seperator"/>
-
+      <div class="comment">
+        <h3 class="comment-header">Comments</h3>
+        <hr class="comment-seperator"/>
+      </div>
       `)
   }
 
