@@ -1,6 +1,6 @@
 {
   "name": "reddit-embed",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Client side script that can embed any reddit posts onto your website natively",
   "main": "red.js",
   "scripts": {

@@ -40,10 +40,10 @@ npm install reddit-embed
 Via CDN:
 
 ```HTML
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/red.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/light-theme.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.0/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.0/css/light-theme.css"/>
 <script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed/red.js"></script>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.0/red.js"></script>
 ```
 
 ## Demos
@@ -68,10 +68,10 @@ Once you have found a post copy the url and add /about.json to the end so it loo
 And then you can just add this markup to your website with the red-href attribute filled in
 
 ```HTML
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/red.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/light-theme.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.0/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.0/css/light-theme.css"/>
 <script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed/red.js"></script>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.0/red.js"></script>
 <script>
   window.onload = red.embedAll
 </script>
@@ -127,8 +127,8 @@ Can be called before a page is finished loading
 *  `initial_padding: 4`
 	* Horizontal spacing for first layer of comments
 *  `improve_spoiler_links: true`
-	* Adds a Visual indicator for spoiler links 
-	
+	* Adds a Visual indicator for spoiler links
+
 	![Spoiler Link Demonstration](https://media.giphy.com/media/3TxpzkvjxlSSm97ROw/giphy.gif)
 
 
