@@ -6,7 +6,7 @@
 <img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/reddit-embed-example.png?raw=true"/>
 </p>
 
-Reddit-Embed is a javascript plugin that lets you embed reddit posts onto your website, through the power of client-side rendering.
+Reddit-Embed is a javascript plugin that lets you embed reddit posts onto your website, through the power of client side rendering.
 
 ## Features
 * No Reddit API key needed!
@@ -44,11 +44,22 @@ Via CDN:
 <script src ="https://cdn.jsdelivr.net/npm/reddit-embed/red.js"></script>
 ```
 
+## Demos
+
+* https://anirudhrahul.github.io/Reddit-Embed/
+
+* https://anirudhrahul.github.io/Reddit-Embed/demos/basic_demo.html
+
+## Testing
+
+If you want to see what a variety of different posts look like when they are embedded I would reccomend checking out [test_links.md](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/test_links.md)
+
+
 # Documentation
 
 ## Getting Started
 First your need to find a reddit post you want to embed.
-Once you have found a reddit post copy the url and add /about.json to the end so it looks something like this:
+Once you have found a post copy the url and add /about.json to the end so it looks something like this:
 
 `https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json`
 
@@ -149,20 +160,6 @@ Then import your palette css file **after** red.css
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/red.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/light-theme.css"/>
 ```
-
-
-## Testing
-
-If you want to see what a variety of different posts look like when they are embedded I would reccomend checking out [test_links.md](https://github.com/AnirudhRahul/Reddit-Embed/blob/master/test_links.md)
-
-
-
-## Demos
-
-* https://anirudhrahul.github.io/Reddit-Embed/
-
-
-* https://anirudhrahul.github.io/Reddit-Embed/demos/basic_demo.html
 
 
 ## Fork Ideas
