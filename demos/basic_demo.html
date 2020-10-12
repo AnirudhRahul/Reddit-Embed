@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@0.1.2/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@0.1.2/css/light-theme.css"/>
+<script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@0.1.2/red.js"></script>
+<script>
+  /* Specify any default options you want
+   to change at the start of a NEW script tag */
+  red.setDefaults({
+    show_comments_section_header:false,
+    post_padding: 100,
+  })
+  // Call embedAll after HTML content is loaded
+  window.onload = red.embedAll
+</script>
+<!-- Make sure any div you use has the reddit-embed class or embedAll() won't target it -->
+<!-- Note that options specified here will override defaults -->
+<!-- Also note that the opts attribute must be valid JSON -->
+<div class="reddit-embed" red-opts='{"post_padding": 6}' red-href="https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json" ></div>
