@@ -64,7 +64,7 @@ post_header,
 post_title,
 post_body,
 }) =>`
-<div class="comment">
+<div>
   ${post_header}
   ${post_title}
   ${post_body}
@@ -114,7 +114,7 @@ const defaults = {
   max_depth: -1,
   open_links_in_new_tab: true,
   padding_per_depth: 24,
-  initial_padding: 8,
+  initial_padding: 4,
   improve_spoiler_links: true,
 }
 const spoiler_links = ['/s', '#s', '/spoiler', '#spoiler']
@@ -292,10 +292,10 @@ function renderDiv(response, div, opts = defaults){
 
   if(opts.show_comments_section && opts.show_comments_section_header){
     outputHTML.push(`
-      <div class="comment">
-        <h3 class="comment-header">Comments</h3>
-        <hr class="comment-seperator"/>
-      </div>
+      <div class="header-spacer-lg"></div>
+      <h3 class="comment-header">Comments</h3>
+      <hr class="comment-seperator"/>
+      <div class="header-spacer"></div>
       `)
   }
 
