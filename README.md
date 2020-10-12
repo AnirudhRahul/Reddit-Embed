@@ -132,6 +132,8 @@ Can be called before a page is finished loading
 	![Spoiler Link Demonstration](https://media.giphy.com/media/3TxpzkvjxlSSm97ROw/giphy.gif)
 
 
+  Note if you want to quickly try out different options you can use the `Settings` button on the [GH pages demo](https://anirudhrahul.github.io/Reddit-Embed/)
+
 
 
 
