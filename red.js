@@ -94,6 +94,31 @@ body
 </div>
 `;
 
+const Loading = `
+<div class="loader">
+  <div class="spin-center"></div>
+
+  <div class="inner-spin">
+    <div class="inner-arc inner-arc_start-a"></div>
+    <div class="inner-arc inner-arc_end-a"></div>
+    <div class="inner-arc inner-arc_start-b"></div>
+    <div class="inner-arc inner-arc_end-b"></div>
+    <div class="inner-moon-a"></div>
+    <div class="inner-moon-b"></div>
+  </div>
+
+  <div class="outer-spin">
+    <div class="outer-arc outer-arc_start-a"></div>
+    <div class="outer-arc outer-arc_end-a"></div>
+    <div class="outer-arc outer-arc_start-b"></div>
+    <div class="outer-arc outer-arc_end-b"></div>
+    <div class="outer-moon-a"></div>
+   <div class="outer-moon-b"></div>
+  </div>
+
+</div>
+`;
+
 // END OF TEMPLATE SECTION
 
 const msPerSecond = 1000;
@@ -104,6 +129,7 @@ const msPerMonth = msPerDay * 30;
 const msPerYear = msPerDay * 365;
 
 const defaults = {
+  show_loading_animation: true,
   show_post: true, // Note setting this to false will override the 3 options below
   show_post_title: true,
   show_post_header: true,
@@ -141,6 +167,9 @@ function add_missing_defaults(opts){
 function embed(url, div, opts = defaults){
   add_missing_defaults(opts)
   console.log("Requesting JSON from reddit: " + url)
+  if(opts.show_loading_animation){
+    prerenderDiv(div, opts)
+  }
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.onload = () => {
@@ -203,6 +232,15 @@ function formatScore(score){
     return score
 }
 
+function prerenderDiv(div, opts = defaults){
+  add_missing_defaults(opts)
+  div.innerHTML = Post({
+    post_header: '',
+    post_title: '',
+    post_body: Loading,
+  })
+
+}
 
 function renderDiv(response, div, opts = defaults){
   add_missing_defaults(opts)
