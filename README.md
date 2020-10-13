@@ -1,5 +1,7 @@
 <p align="center">
-<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/repo-icon.png?raw=true" width="100"/>
+	<a href=''>
+<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/repo-icon.png?raw=true" width="120"/>
+	</a>
 </p>
 
 
