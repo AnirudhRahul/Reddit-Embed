@@ -1,3 +1,6 @@
+<div style="text-align:center">
+<img align="center" src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/repo-icon.png?raw=true" style="max-height:100px"/>
+</div>
 <h1 align="center">
 	Reddit-Embed
   <br>
