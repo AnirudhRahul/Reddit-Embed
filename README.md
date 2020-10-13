@@ -40,10 +40,10 @@ npm install reddit-embed
 Via CDN:
 
 ```HTML
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.4/css/red.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.4/css/light-theme.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/css/light-theme.css"/>
 <script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.4/red.js"></script>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/red.js"></script>
 ```
 
 ## Demos
@@ -65,17 +65,20 @@ Once you have found a post copy the url and add /about.json to the end so it loo
 
 `https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json`
 
-And then you can just add this markup to your website with the red-href attribute filled in
+Then you can just add this markup to your website with your own `red-href`, `red-title`, `red-author` attributes filled in
 
 ```HTML
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.4/css/red.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.4/css/light-theme.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/css/light-theme.css"/>
 <script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.4/red.js"></script>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/red.js"></script>
 <script>
   window.onload = red.embedAll
 </script>
-<div class="reddit-embed" red-href="your_link_goes_here"</div>
+<div class="reddit-embed center" red-author="keanu_reeves"
+red-title="Meeting Keanu Reeves at a traffic light"
+red-href="https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json" ></div>
+
 ```
 Note that we have to import light-theme.css because red.css defaults to a dark theme with white text
 

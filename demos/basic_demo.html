@@ -1,16 +1,17 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.4/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/css/red.css"/>
 <!-- Make sure you import color palettes after red.css -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.4/css/light-theme.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/css/light-theme.css"/>
 <!-- HTML decoding dependency -->
 <script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
 <!-- Main source file -->
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.4/red.js"></script>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/red.js"></script>
 <script>
   /* Specify any default options you want
    to change at the start of a NEW script tag */
   red.setDefaults({
     show_comments_section_header:false,
     initial_padding: 100,
+    post_title:'Will be overridden'
   })
   // Call embedAll after HTML content is loaded
   window.onload = red.embedAll
@@ -18,4 +19,6 @@
 <!-- Make sure any div you use has the reddit-embed class or embedAll() won't target it -->
 <!-- Note that options specified here will override defaults -->
 <!-- Also note that the opts attribute must be valid JSON -->
-<div class="reddit-embed center" red-opts='{"initial_padding": 10}' red-href="https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json" ></div>
+<div class="reddit-embed center" red-opts='{"initial_padding": 10}' red-author="keanu_reeves"
+red-title="Meeting Keanu Reeves at a traffic light"
+red-href="https://www.reddit.com/r/pics/comments/7pnxv2/meeting_keanu_reeves_at_a_traffic_light/about.json" ></div>
