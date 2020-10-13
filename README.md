@@ -108,27 +108,47 @@ Can be called before a page is finished loading
 
 ## Options
 *  `show_loading_animation: true`
+	* Type: Boolean
 *  `post_title: false`
+	* Type: false or String
+	* If this value is set to a string then it will override the title of the post
+	* Can be useful if you want to prevent content jumping
+	* Can be set through the `red-title` attribute if using `res.embedAll()`
 *  `post_author: false`
-*  `show_post: Boolean`
+	* Type: false or String
+	* If this value is set to a string then it will override the name of the post author
+	* Can be set through the `red-author` attribute if using `res.embedAll()`
+*  `show_post: true`
+	* Type: Boolean
 	* Overrides all other show_post options if set to false
-*  `show_post_title: Boolean`
-*  `show_post_header: Boolean`
-*  `show_post_body: Boolean`
-*  `show_comments_section: Boolean`
+*  `show_post_title: true`
+	* Type: Boolean
+*  `show_post_header: true`
+	* Type: Boolean
+*  `show_post_body: true`
+	* Type: Boolean
+*  `show_comments_section: true`
+	* Type: Boolean
 	* Overrides all other show_comments_section options if set to false
-*  `show_comments_section_header: Boolean`
-*  `ignore_sticky_comments: Boolean`
+*  `show_comments_section_header: true`
+	* Type: Boolean
+*  `ignore_sticky_comments: false`
+	* Type: Boolean
 	* Will skip any stickied comments in the render queue
 *  `max_depth: -1`
+	* Type: Integer
 	* Will only render comments with a depth <= max_depth, note that depth is 0 indexed so max_depth=0 will render the top layer of comments
 	* max_depth is ignored if its < 0
 *  `open_links_in_new_tab: true`
+	* Type: Boolean
 *  `padding_per_depth: 24`
-	* Horizontal spacing between each layer of comments
+	* Type: Integer
+	* Horizontal spacing in px between each layer of comments
 *  `initial_padding: 4`
-	* Horizontal spacing for first layer of comments
+	* Type: Integer
+	* Horizontal spacing in px for first layer of comments
 *  `improve_spoiler_links: true`
+	* Type: Boolean
 	* Adds a Visual indicator for spoiler links
 
 	![Spoiler Link Demonstration](https://media.giphy.com/media/3TxpzkvjxlSSm97ROw/giphy.gif)
