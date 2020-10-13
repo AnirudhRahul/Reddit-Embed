@@ -23,9 +23,12 @@ A javascript plugin that lets you natively embed reddit posts/comments onto any 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/css/red.css"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/css/light-theme.css"/>
-<script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/red.js"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.5/red.js"
+></script>
+<script
+>
   window.onload = red.embedAll
 </script>
 <div id="embed-div"
@@ -33,9 +36,6 @@ class="reddit-embed center" red-author="u/ReallyRickAstley"
 red-title="Rick is Rolling"
 red-href="https://www.reddit.com/r/pics/comments/haucpf/ive_found_a_few_funny_memories_during_lockdown/" ></div>
 
-<p align="center">
-<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/reddit-embed-example.png?raw=true" style="max-height:500px"/>
-</p>
 
 
 
