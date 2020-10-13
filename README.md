@@ -1,8 +1,10 @@
-<div style="text-align:center">
-<img align="center" src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/repo-icon.png?raw=true" style="max-height:100px"/>
-</div>
+<p align="center">
+<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/repo-icon.png?raw=true" width="100"/>
+</p>
+
+
 <h1 align="center">
-	Reddit-Embed
+Reddit-Embed
   <br>
 </h1>
 
