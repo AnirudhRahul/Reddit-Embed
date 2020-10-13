@@ -1,0 +1,157 @@
+<style>
+  html {
+    --reddit-spinner: #1EAAF0;
+    --spin-center: translate(-50%, -50%);
+  }
+  .reddit-embed .spin-center {
+     position: absolute;
+     width: 30px;
+     height: 30px;
+     background: var(--reddit-spinner);
+     border-radius: 50%;
+     top: 50%;
+     left: 50%;
+     transform: var(--spin-center);
+  }
+  .reddit-embed .outer-spin, .reddit-embed .inner-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  .reddit-embed .outer-spin {
+    animation: spin 4s linear infinite;
+  }
+  .reddit-embed .outer-arc, .reddit-embed .inner-arc {
+    position: absolute;
+    border-radius: 50%;
+    border: 4px solid;
+  }
+  .reddit-embed .outer-arc {
+    width: 100px;
+    height: 100px;
+  }
+  .reddit-embed .outer-arc_start-a {
+    border-color: transparent transparent transparent var(--reddit-spinner);
+    /*NOTE: the order here very much matters!  */
+    transform: var(--spin-center) rotate(65deg);
+  }
+  .reddit-embed .outer-arc_end-a {
+    border-color: var(--reddit-spinner) transparent transparent transparent;
+    transform: var(--spin-center) rotate(45deg);
+  }
+  .reddit-embed .outer-arc_start-b {
+    border-color: transparent transparent transparent var(--reddit-spinner);
+    transform: var(--spin-center) rotate(65deg) scale(-1, -1);
+  }
+  .reddit-embed .outer-arc_end-b {
+    border-color: var(--reddit-spinner) transparent transparent transparent;
+    transform: var(--spin-center) rotate(45deg) scale(-1, -1);
+  }
+
+  .reddit-embed .outer-moon-a {
+     position: absolute;
+     top:50%;
+     left:50%;
+     width: 14px;
+     height: 14px;
+     background: var(--reddit-spinner);
+     border-radius: 50%;
+     transform: var(--spin-center) translate(52px, 0);
+  }
+  .reddit-embed .outer-moon-b {
+     position: absolute;
+     top:50%;
+     left:50%;
+     width: 14px;
+     height: 14px;
+     background: var(--reddit-spinner);
+     border-radius: 50%;
+     transform: var(--spin-center) translate(-52px, 0);
+  }
+  .reddit-embed .inner-spin {
+    animation: spin 3s linear infinite;
+  }
+  .reddit-embed .inner-arc {
+    width: 62px;
+    height: 62px;
+  }
+  .reddit-embed .inner-arc_start-a {
+    border-color: transparent transparent transparent var(--reddit-spinner);
+  /*NOTE: the order here very much matters!  */
+    transform: var(--spin-center) rotate(65deg);
+  }
+  .reddit-embed .inner-arc_end-a {
+    border-color: var(--reddit-spinner) transparent transparent transparent;
+    transform: var(--spin-center) rotate(45deg);
+  }
+  .reddit-embed .inner-arc_start-b {
+    border-color: transparent transparent transparent var(--reddit-spinner);
+    transform: var(--spin-center) rotate(65deg) scale(-1, -1);
+  }
+  .reddit-embed .inner-arc_end-b {
+    border-color: var(--reddit-spinner) transparent transparent transparent;
+    transform: var(--spin-center) rotate(45deg) scale(-1, -1);
+  }
+  .reddit-embed .inner-moon-a {
+     position: absolute;
+     top:50%;
+     left:50%;
+     width: 12px;
+     height: 12px;
+     background: var(--reddit-spinner);
+     border-radius: 50%;
+     transform: var(--spin-center) translate(33px, 0);
+  }
+  .reddit-embed .inner-moon-b {
+     position: absolute;
+     top:50%;
+     left:50%;
+     width: 12px;
+     height: 12px;
+     background: var(--reddit-spinner);
+     border-radius: 50%;
+     transform: var(--spin-center) translate(-33px, 0);
+  }
+
+  .reddit-embed .loader {
+    position: relative;
+    width:120px;
+    height:120px;
+    transform: scale(0.6);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #534; */
+  }
+
+  @keyframes spin { 100% {transform: rotate(360deg); } }
+
+</style>
+
+
+<!-- Based on https://medium.com/free-code-camp/how-to-build-a-reddit-inspired-loading-spinner-with-only-html-and-css-5b2fca3fdca -->
+<body class="reddit-embed">
+  <h3> Text </h3>
+  <div class="loader">
+    <div class="spin-center"></div>
+
+    <div class="inner-spin">
+      <div class="inner-arc inner-arc_start-a"></div>
+      <div class="inner-arc inner-arc_end-a"></div>
+      <div class="inner-arc inner-arc_start-b"></div>
+      <div class="inner-arc inner-arc_end-b"></div>
+      <div class="inner-moon-a"></div>
+      <div class="inner-moon-b"></div>
+    </div>
+
+    <div class="outer-spin">
+      <div class="outer-arc outer-arc_start-a"></div>
+      <div class="outer-arc outer-arc_end-a"></div>
+      <div class="outer-arc outer-arc_start-b"></div>
+      <div class="outer-arc outer-arc_end-b"></div>
+      <div class="outer-moon-a"></div>
+     <div class="outer-moon-b"></div>
+    </div>
+
+  </div>
+</body>

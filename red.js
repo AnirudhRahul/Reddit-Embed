@@ -130,6 +130,8 @@ const msPerYear = msPerDay * 365;
 
 const defaults = {
   show_loading_animation: true,
+  post_title: false, // optional arguement will override the title if it's set
+  post_author: false,
   show_post: true, // Note setting this to false will override the 3 options below
   show_post_title: true,
   show_post_header: true,
@@ -191,6 +193,11 @@ function embedAll(){
         opts = JSON.parse(div.getAttribute("red-opts"))
       }catch(e){console.error(e)}
     }
+    if(div.hasAttribute("red-title"))
+      opts.post_title = div.getAttribute("red-title")
+    if(div.hasAttribute("red-author"))
+      opts.post_author = div.getAttribute("red-author")
+
     embed(div.getAttribute("red-href"), div, opts)
     // Reset options
     opts = defaults
@@ -234,9 +241,26 @@ function formatScore(score){
 
 function prerenderDiv(div, opts = defaults){
   add_missing_defaults(opts)
+  const post_header = opts.post_author ?
+  `
+  <div class="author-info">
+      Posted by ${opts.post_author}
+  </div>
+  <div class="header-spacer"></div>
+  ` :
+  `
+  <div class="author-info">
+  </div>
+  <div class="header-spacer"></div>
+  `
+
+  const post_title = Post_Title({
+    post_link: '',
+    post_title: opts.post_title,
+  })
   div.innerHTML = Post({
-    post_header: '',
-    post_title: '',
+    post_header: opts.show_post && opts.show_post_header && (opts.post_title || opts.post_author) ? post_header:'',
+    post_title: opts.show_post && opts.show_post_title && opts.post_title ? post_title:'',
     post_body: Loading,
   })
 
@@ -400,7 +424,7 @@ function renderDiv(response, div, opts = defaults){
       // Visual indicator for spoiler links
       anchor.innerHTML += '<sup class="expand-button">+</sup>'
       // Show the user an alert when clicking a spoiler link
-      anchor.href = '#'
+      anchor.href = ''
       anchor.setAttribute('onclick', 'alert("This is a spoiler link, hover over it to see the spoiler text"); return false;')
     }
     else{

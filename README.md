@@ -107,7 +107,9 @@ Can be called before a page is finished loading
 
 
 ## Options
-
+*  `show_loading_animation: true`
+*  `post_title: false`
+*  `post_author: false`
 *  `show_post: Boolean`
 	* Overrides all other show_post options if set to false
 *  `show_post_title: Boolean`
