@@ -282,14 +282,14 @@ function renderDiv(response, div, opts = defaults){
   if(opts.show_post){
     post_data.score = formatScore(post_data.score)
     const post_header = Post_Header({
-      author_name: post_data.author,
+      author_name: opts.post_author || post_data.author,
       time_ago: timeDifference(Date.now(), post_data.created_utc*1000),
       post_points: post_data.score,
       point_plural: post_data.score == 1 ? '':'s',
     })
     const post_title = Post_Title({
       post_link: 'https://reddit.com'+post_data.permalink,
-      post_title: post_data.title,
+      post_title: opts.post_title || post_data.title,
     })
     let post_body = ''
     // Regular text post
