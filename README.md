@@ -1,5 +1,4 @@
 <h1 align="center">
-  <br>
 	Reddit-Embed
   <br>
 </h1>
