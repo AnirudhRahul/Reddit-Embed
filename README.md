@@ -1,13 +1,31 @@
-# Reddit-Embed
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
-[![PR's Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)  
+<h1 align="center">
+  <br>
+	Reddit-Embed 
+  <br>
+</h1>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/reddit-embed">
+    <img src="https://badge.fury.io/js/reddit-embed.svg">
+  </a>
+  <a href="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/LICENSE">
+      <img src="https://img.shields.io/apm/l/atomic-design-ui.svg">
+  </a>
+  <a href="http://makeapullrequest.com">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)">
+  </a>
+</p>
+
+
+<p align="center">
+A javascript plugin that lets you natively embed reddit posts/comments onto any website
+</p>
 
 
 <p align="center">
 <img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/reddit-embed-example.png?raw=true" style="max-height:500px"/>
 </p>
 
-Reddit-Embed is a javascript plugin that lets you embed reddit posts onto your website, through the power of client side rendering.
 
 
 ## Features
