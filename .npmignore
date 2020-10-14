@@ -3,3 +3,4 @@ demos
 index.html
 *.png
 test_links.md
+.cache
