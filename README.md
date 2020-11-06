@@ -61,9 +61,9 @@ npm install reddit-embed
 Via CDN:
 
 ```HTML
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7/css/red.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7/css/light-theme.css"/>
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.1.0/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.1.0/css/light-theme.css"/>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.1.0"></script>
 ```
 
 ## Demos
@@ -88,9 +88,9 @@ Once you have found a post copy the url and add /about.json to the end so it loo
 Then you can just add this markup to your website with your own `red-href`, `red-title`, `red-author` attributes filled in
 
 ```HTML
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7/css/red.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7/css/light-theme.css"/>
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.1.0/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.1.0/css/light-theme.css"/>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.1.0"></script>
 <script>
   window.onload = red.embedAll
 </script>
