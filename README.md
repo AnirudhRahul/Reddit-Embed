@@ -54,18 +54,16 @@ npm install reddit-embed
 ```HTML
 <link rel="stylesheet" href="node_modules/reddit-embed/css/red.css"/>
 <link rel="stylesheet" href="node_modules/reddit-embed/css/light-theme.css"/>
-<script src="node_modules/he/he.js"></script>
-<script src ="node_modules/reddit-embed/red.js"></script>
+<script src ="node_modules/reddit-embed/dist/bundle.min.js"></script>
 ```
 
 
 Via CDN:
 
 ```HTML
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.6/css/red.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.6/css/light-theme.css"/>
-<script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.6/red.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7/css/light-theme.css"/>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7"></script>
 ```
 
 ## Demos
@@ -90,10 +88,9 @@ Once you have found a post copy the url and add /about.json to the end so it loo
 Then you can just add this markup to your website with your own `red-href`, `red-title`, `red-author` attributes filled in
 
 ```HTML
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.6/css/red.css"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.6/css/light-theme.css"/>
-<script src="https://cdn.jsdelivr.net/npm/he@1.2.0/he.js"></script>
-<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.6/red.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7/css/red.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7/css/light-theme.css"/>
+<script src ="https://cdn.jsdelivr.net/npm/reddit-embed@1.0.7"></script>
 <script>
   window.onload = red.embedAll
 </script>
@@ -233,11 +230,13 @@ Then import your palette css file **after** red.css
 
 ## Build Instructions
 Make sure you have node 12+ and npm 6+ installed in your environment.
+
+
 Install the build dependecies by running:
 ```
 npm install
 ```
-Then use the following command to build bundle.js and bundle.min.js
+Then use the following command to build `bundle.js` and `bundle.min.js`
 ```
 npm run build
 ```
