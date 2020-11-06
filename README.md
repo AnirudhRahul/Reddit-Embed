@@ -229,3 +229,15 @@ Then import your palette css file **after** red.css
 * Native reddit videos don't play any audio
 
 * Posts with multiple images or videos are not supported
+
+
+## Build Instructions
+Make sure you have node 12+ and npm 6+ installed in your environment.
+Install the build dependecies by running:
+```
+npm install
+```
+Then use the following command to build bundle.js and bundle.min.js
+```
+npm run build
+```

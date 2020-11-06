@@ -4,7 +4,7 @@
   "description": "Client side script that can embed any reddit post onto your website!",
   "main": "red.js",
   "scripts": {
-    "bundle": "parcel build red.js css/red.css css/light-theme.css css/dark-theme.css"
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -24,10 +24,9 @@
     "url": "https://github.com/AnirudhRahul/Reddit-Embed/issues"
   },
   "homepage": "https://github.com/AnirudhRahul/Reddit-Embed#readme",
+  "devDependencies": {},
   "dependencies": {
-    "he": "^1.2.0"
-  },
-  "devDependencies": {
-    "cssnano": "^4.1.10"
+    "concat": "^1.0.3",
+    "terser": "^5.3.8"
   }
 }
