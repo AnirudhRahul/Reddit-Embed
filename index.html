@@ -47,11 +47,20 @@
   function toggleTheme(){
     const theme_to_disable = darkTheme? 'dark-theme' : 'light-theme'
     const theme_to_enable = !darkTheme? 'dark-theme' : 'light-theme'
-    for(element of document.getElementsByClassName(theme_to_disable))
-      element.setAttribute('disabled', '')
+
     for(element of document.getElementsByClassName(theme_to_enable))
       element.removeAttribute('disabled')
+    for(element of document.getElementsByClassName(theme_to_disable))
+      element.setAttribute('disabled', '')
+
     darkTheme = !darkTheme
+    if(darkTheme){
+      document.getElementById('github-icon').src = 'GitHub-Mark-Light-64px.png'
+    }
+    else{
+      document.getElementById('github-icon').src = 'GitHub-Mark-64px.png'
+    }
+
   }
 </script>
 
@@ -96,6 +105,9 @@
     <button type="button" class="btn btn-primary ml-1 mt-2" data-toggle="collapse" data-target="#settings">Collapse</button>
   </div>
   <hr style="background: #3498db; margin-bottom:0; margin-top:0.7rem"/>
+  <a href="https://github.com/AnirudhRahul/Reddit-Embed" target="_blank">
+    <img src="GitHub-Mark-Light-64px.png" id="github-icon" style="position: fixed; bottom: 0.4rem; right: 0.35rem; width: 48px"/>
+  </a>
   <div id="out" class="reddit-embed center"></div>
 
 
