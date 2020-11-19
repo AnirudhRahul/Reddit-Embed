@@ -424,6 +424,11 @@ and comment body */
   transition: background 1s ease-out !important;
 }
 
+.reddit-embed .loader * {
+	-webkit-box-sizing: content-box !important;
+	box-sizing: content-box !important;
+}
+
 /* Loading Animation*/
 .reddit-embed .spin-center {
 	 position: absolute !important;
