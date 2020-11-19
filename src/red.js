@@ -272,8 +272,8 @@ function renderDiv(response, div, opts = defaults){
   const outputHTML = []
   const post_data = response[0].data.children[0].data
   const comments = response[1].data.children
-  window.comments = comments
-  window.post_data = post_data
+  // window.comments = comments
+  // window.post_data = post_data
 
 
 
@@ -428,9 +428,13 @@ function renderDiv(response, div, opts = defaults){
       anchor.setAttribute('onclick', 'alert("This is a spoiler link, hover over it to see the spoiler text"); return false;')
     }
     else{
+      if(anchor.getAttribute('href').startsWith('/'))
+        anchor.href = 'https://reddit.com'+anchor.getAttribute('href')
+
       if(opts.open_links_in_new_tab)
         anchor.setAttribute('target', '_blank')
     }
+
   }
 
   // Make spoiler tags toggle when clicked
