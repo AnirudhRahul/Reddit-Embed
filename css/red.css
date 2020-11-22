@@ -96,7 +96,7 @@ in a reddit-embed div */
 
 /* Max width for reddit-embed  div*/
 .reddit-embed {
-  max-width: 800px !important;
+  max-width: 800px;
 }
 
 .reddit-embed.center{
