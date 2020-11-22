@@ -213,6 +213,11 @@ Then import your palette css file **after** red.css
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reddit-embed/css/light-theme.css"/>
 ```
 
+## Unstrict CSS
+By default red.css uses !important to ovveride any CSS selectors targeting elements within a .reddit-embed div, but if you don't want that behavior you can use unstrict-red.css
+
+Note that the max-width property for .reddit-embed divs can be overriden in red.css 
+
 
 ## Fork Ideas
 * Make a WordPress plugin that wraps this library
