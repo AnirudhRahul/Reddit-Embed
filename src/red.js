@@ -288,7 +288,7 @@ function renderDiv(response, div, opts = defaults){
       point_plural: post_data.score == 1 ? '':'s',
     })
     const post_title = Post_Title({
-      post_link: 'https://reddit.com'+post_data.permalink,
+      post_link: 'https://www.reddit.com'+post_data.permalink,
       post_title: opts.post_title || post_data.title,
     })
     let post_body = ''
@@ -393,7 +393,7 @@ function renderDiv(response, div, opts = defaults){
 
     const comment = Comment({
       left_padding: initial_shift + shift_diff * depth,
-      post_link: 'https://reddit.com' + item_data.permalink,
+      post_link: 'https://www.reddit.com' + item_data.permalink,
       author_name: item_data.author,
       author_class: item_data.is_submitter ? 'authorname bold': 'authorname',
       comment_points: item_data.score,
@@ -429,7 +429,7 @@ function renderDiv(response, div, opts = defaults){
     }
     else{
       if(anchor.getAttribute('href').startsWith('/'))
-        anchor.href = 'https://reddit.com'+anchor.getAttribute('href')
+        anchor.href = 'https://www.reddit.com'+anchor.getAttribute('href')
 
       if(opts.open_links_in_new_tab)
         anchor.setAttribute('target', '_blank')
