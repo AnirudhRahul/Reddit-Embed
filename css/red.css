@@ -114,6 +114,14 @@ in a reddit-embed div */
   height: 12px !important;
 }
 
+.reddit-embed .error{
+	font-size: 24px !important;
+	font-family: Noto Sans, Arial, sans-serif !important;
+  line-height: 27px !important;
+	margin-top: 12px !important;
+	text-align: center !important;
+}
+
 /* Post title styling */
 .reddit-embed .title {
   font-family: IBMPlexSans, Arial, sans-serif !important;

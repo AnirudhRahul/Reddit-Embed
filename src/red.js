@@ -6,7 +6,7 @@ var red = function(){
     All templates use named arguements
   */
 
-//Split up post comments so they can easily be disabled
+//Split up comments into components so they can easily be disabled
 const Post_Header = ({
 author_name,
 time_ago,
@@ -119,6 +119,12 @@ const Loading = `
 </div>
 `;
 
+const Error = (msg) => `
+<p class="error">
+${msg}
+</p>
+`
+
 // END OF TEMPLATE SECTION
 
 const msPerSecond = 1000;
@@ -166,8 +172,30 @@ function add_missing_defaults(opts){
       opts[key] = defaults[key]
 }
 
-function embed(url, div, opts = defaults){
+function format_url(url){
+  const bad_prefixes = ["http://reddit", "http://www.reddit", "https://reddit", "reddit", "www.reddit"]
+  for(prefix of bad_prefixes){
+    if(url.startsWith(prefix)){
+        url = "https://www.reddit" + url.slice(prefix.length)
+        break;
+    }
+  }
+
+  if(!url.endsWith('.json')){
+    if(url.endsWith('/'))
+      url += 'about.json'
+    else
+      url += '.json'
+  }
+
+  return url
+}
+
+
+function embed(input_url, div, opts = defaults){
   add_missing_defaults(opts)
+  const url = format_url(input_url)
+  console.log(input_url,'\n', url)
   console.log("Requesting JSON from reddit: " + url)
   if(opts.show_loading_animation){
     prerenderDiv(div, opts)
@@ -175,8 +203,15 @@ function embed(url, div, opts = defaults){
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.onload = () => {
-    renderDiv(JSON.parse(xhr.responseText), div, opts);
+    if(xhr.status!=200)
+      div.innerHTML = Error("Post not found :(")
+    else
+      renderDiv(JSON.parse(xhr.responseText), div, opts);
   }
+  xhr.onerror = () => {
+    div.innerHTML = Error("Network Error :(")
+  }
+
   xhr.send();
 }
 
