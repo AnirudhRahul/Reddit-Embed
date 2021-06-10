@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="css/red.css"/>
 <!-- Main source file for Reddit-Embed -->
-<script src ="dist/bundle.min.js"></script>
+<script src ="dist/bundle.js"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css" class="light-theme" disabled/>
 <link rel="stylesheet" href="css/light-theme.css" class="light-theme" disabled/>
@@ -15,21 +15,8 @@
 <link rel="stylesheet" href="css/dark-theme.css" class="dark-theme"/>
 
 <script>
-  function validateURL(url){
-    if(!url.startsWith('https://')){
-      alert('The input URL must start with https://')
-      return false;
-    }
-    else if(!url.endsWith('/about.json')){
-      alert('The input URL must end with about.json, look at the test posts for examples')
-      return false;
-    }
-    return true;
-  }
-
   function load(){
-    if(validateURL(document.getElementById("url").value))
-      red.embed(document.getElementById("url").value, document.getElementById("out"))
+    red.embed(document.getElementById("url").value, document.getElementById("out"))
   }
 
   function setDefaults(){
@@ -72,7 +59,7 @@
 
   <h2>Enter the url to preview:</h2>
 
-  <input type="text" class="form-control" value="https://www.reddit.com/r/wallpapers/comments/5xq6no/decided_to_combine_two_of_my_favorite_wallpapers/about.json" id="url">
+  <input type="text" onload="setup" class="form-control" value="reddit.com/r/wallpapers/comments/5xq6no/decided_to_combine_two_of_my_favorite_wallpapers/" id="url">
 
   <div style="display: flex; align-items: center; flex-wrap: nowrap;" class="mt-2">
     <button type="button" onClick="load()" class="btn btn-primary">Load json</button>
@@ -110,6 +97,12 @@
   </a>
   <div id="out" class="reddit-embed center"></div>
 
+<script>
+  const params = new URLSearchParams(location.search);
+  if(params.has("post"))
+    document.getElementById("url").value = params.get("post")
+  load();
+</script>
 
 </body>
 </html>
