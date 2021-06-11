@@ -1,7 +1,7 @@
 
 
 <h1 align="center">
-<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/icons/repo_offset.png?raw=true" height="42"/>
+<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/icons/repo100.png?raw=true" width="30"/>
 Reddit-Embed
 </h1>
 
