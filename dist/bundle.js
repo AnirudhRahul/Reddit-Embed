@@ -354,7 +354,7 @@ var red = function(){
     All templates use named arguements
   */
 
-//Split up post comments so they can easily be disabled
+//Split up comments into components so they can easily be disabled
 const Post_Header = ({
 author_name,
 time_ago,
@@ -467,6 +467,12 @@ const Loading = `
 </div>
 `;
 
+const Error = (msg) => `
+<p class="error">
+${msg}
+</p>
+`
+
 // END OF TEMPLATE SECTION
 
 const msPerSecond = 1000;
@@ -514,8 +520,30 @@ function add_missing_defaults(opts){
       opts[key] = defaults[key]
 }
 
-function embed(url, div, opts = defaults){
+function format_url(url){
+  const bad_prefixes = ["http://reddit", "http://www.reddit", "https://reddit", "reddit", "www.reddit"]
+  for(prefix of bad_prefixes){
+    if(url.startsWith(prefix)){
+        url = "https://www.reddit" + url.slice(prefix.length)
+        break;
+    }
+  }
+
+  if(!url.endsWith('.json')){
+    if(url.endsWith('/'))
+      url += 'about.json'
+    else
+      url += '.json'
+  }
+
+  return url
+}
+
+
+function embed(input_url, div, opts = defaults){
   add_missing_defaults(opts)
+  const url = format_url(input_url)
+  console.log(input_url,'\n', url)
   console.log("Requesting JSON from reddit: " + url)
   if(opts.show_loading_animation){
     prerenderDiv(div, opts)
@@ -523,8 +551,15 @@ function embed(url, div, opts = defaults){
   const xhr = new XMLHttpRequest();
   xhr.open('GET', url, true);
   xhr.onload = () => {
-    renderDiv(JSON.parse(xhr.responseText), div, opts);
+    if(xhr.status!=200)
+      div.innerHTML = Error("Post not found :(")
+    else
+      renderDiv(JSON.parse(xhr.responseText), div, opts);
   }
+  xhr.onerror = () => {
+    div.innerHTML = Error("Network Error :(")
+  }
+
   xhr.send();
 }
 
@@ -636,7 +671,7 @@ function renderDiv(response, div, opts = defaults){
       point_plural: post_data.score == 1 ? '':'s',
     })
     const post_title = Post_Title({
-      post_link: 'https://reddit.com'+post_data.permalink,
+      post_link: 'https://www.reddit.com'+post_data.permalink,
       post_title: opts.post_title || post_data.title,
     })
     let post_body = ''
@@ -741,7 +776,7 @@ function renderDiv(response, div, opts = defaults){
 
     const comment = Comment({
       left_padding: initial_shift + shift_diff * depth,
-      post_link: 'https://reddit.com' + item_data.permalink,
+      post_link: 'https://www.reddit.com' + item_data.permalink,
       author_name: item_data.author,
       author_class: item_data.is_submitter ? 'authorname bold': 'authorname',
       comment_points: item_data.score,
@@ -777,7 +812,7 @@ function renderDiv(response, div, opts = defaults){
     }
     else{
       if(anchor.getAttribute('href').startsWith('/'))
-        anchor.href = 'https://reddit.com'+anchor.getAttribute('href')
+        anchor.href = 'https://www.reddit.com'+anchor.getAttribute('href')
 
       if(opts.open_links_in_new_tab)
         anchor.setAttribute('target', '_blank')
