@@ -307,10 +307,6 @@ function renderDiv(response, div, opts = defaults){
   const outputHTML = []
   const post_data = response[0].data.children[0].data
   const comments = response[1].data.children
-  // window.comments = comments
-  // window.post_data = post_data
-
-
 
   // Renders post seperately since json structure
   // is much different from a comment
@@ -378,7 +374,7 @@ function renderDiv(response, div, opts = defaults){
     // Link only post
     else if(post_data.url){
       post_body = Post_Body({
-        post_body: '<a href="' + post_data.url + '">' + post_data.url + '</a>'
+        post_body: `<a href="${post_data.url}">${post_data.url}</a>`
       })
     }
 
@@ -449,6 +445,10 @@ function renderDiv(response, div, opts = defaults){
           })
       }
     }
+  }
+
+  if(outputHTML.length>0){
+    outputHTML.push(`<div class="author-info" style="float:right">rendered by &nbsp <a href="https://github.com/AnirudhRahul/Reddit-Embed">Reddit-Embed</a></div>`)
   }
 
   div.innerHTML = outputHTML.join('\n')
