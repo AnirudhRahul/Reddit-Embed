@@ -11,7 +11,7 @@ async function minify_bundle(){
       keep_fnames: true
     },
     format: {
-      preamble: "/* https://github.com/AnirudhRahul/Reddit-Embed v1.1.1 by @anirudhrahul | MIT license */"
+      preamble: "/* https://github.com/AnirudhRahul/Reddit-Embed v1.1.2 by @anirudhrahul | MIT license */"
     }
   });
   fs.writeFileSync("dist/bundle.min.js", result.code)
