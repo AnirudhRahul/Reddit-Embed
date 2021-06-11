@@ -28,7 +28,7 @@ A javascript plugin that lets you natively embed reddit posts/comments onto any 
 </p>
 
 <p align="center">
-<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/reddit_embed_example_2.png?raw=true" style="max-height:500px"/>
+<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/icons/repo.png?raw=true" style="max-height:500px"/>
 </p>
 
 
@@ -216,7 +216,7 @@ Then import your palette css file **after** red.css
 ## Unstrict CSS
 By default red.css uses !important to ovveride any CSS selectors targeting elements within a .reddit-embed div, but if you don't want that behavior you can use unstrict-red.css
 
-Note that the max-width property for .reddit-embed divs can be overriden in red.css 
+Note that the max-width property for .reddit-embed divs can be overriden in red.css
 
 
 ## Fork Ideas
