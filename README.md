@@ -1,13 +1,7 @@
-<p align="center">
-	<a href='#readme'>
-<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/icons/repo200.png?raw=true" width="120"/>
-	</a>
-</p>
-
 
 <h1 align="center">
 Reddit-Embed
-  <br>
+<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/icons/repo100.png?raw=true" height="40" style="vertical-align:text-bottom"/>
 </h1>
 
 <p align="center">
