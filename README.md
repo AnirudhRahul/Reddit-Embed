@@ -1,9 +1,7 @@
 
-
-<h1 align="center">
-<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/icons/repo100.png?raw=true" width="30"/>
-Reddit-Embed
-</h1>
+<p align="center">
+<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/header.png?raw=true" height="60px"/>
+</p>
 
 <p align="center">
   <a href="https://www.npmjs.com/package/reddit-embed">
