@@ -1,6 +1,6 @@
 <p align="center">
 	<a href='#readme'>
-<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/icons/repo_200.png?raw=true" width="120"/>
+<img src="https://github.com/AnirudhRahul/Reddit-Embed/blob/master/icons/repo200.png?raw=true" width="120"/>
 	</a>
 </p>
 
